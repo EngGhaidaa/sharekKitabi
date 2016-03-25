@@ -1,0 +1,123 @@
+ <template name="details">
+    {{#with thisBook }}
+      <div class="col-md-offset-1">
+
+            <h3 class="text-center clearfix overme">
+                <span itemprop="name">
+                    <b>
+                        {{title}}
+                    </b>
+                </span>
+            </h3>
+      </div>
+       <div class="row row-margin-bottom">
+         <div class="col-md-10 no-padding lib-item" data-category="view">
+            <div class="lib-panel">
+                <div class="row box-shadow">
+                     <div class="col-md-5">
+                         <div class="img-book">
+                              <img class="img-rounded" width="404" height="336" src={{getBookPic img}} >
+                         </div>
+                     </div>
+                       <br>
+                     <div class="col-md-6">
+                         <div class="lib-row lib-desc">
+                               <table class="table table-striped">
+
+                                   <tbody>
+                                     <tr>
+                                         <td>
+                                             اسم المؤلف  {{author}}
+
+                                         </td>
+                                         </tr>
+                                     <tr>
+                                       <td>
+                                                    الناشر{{publisher}}
+                                       </td>
+                                     </tr>
+                                     <tr>
+                                       <td>
+                                                    عدد الصفحات  {{numberOfPagese}} صفحة
+                                       </td>
+                                     </tr>
+                                     <tr>
+                                       <td>
+                                           سعر الإيجار  {{rent}} Tl
+                                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                           عدد النسخ المتوفرة للاستعارة  {{copiesPurchas}}
+                                       </td>
+                                     </tr>
+                                     <tr>
+                                       <td>
+                                           سعر التأمين  {{insurance}} Tl
+
+                                       </td>
+                                     </tr>
+                                     <tr>
+                                       <td>
+                                                    مدة الإيجار {{rentTime}}
+
+                                       </td>
+                                     </tr>
+                                     <tr>
+                                       <td>
+                                                    {{#if purch}}
+                                                         سعر الشراء {{purchasing}} Tl
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        عدد النسخ المتوفرة للشراء  {{copiesPurchas}} نسخة
+                                                      {{else}}غير متاح للشراء حاليا
+                                                    {{/if}}
+                                       </td>
+                                     </tr>
+                                     <tr>
+                                       <td>نبذة عن الكتاب<br> {{summary}}
+                                       </td>
+                                     </tr>
+                                     <tr>
+                                       <td> تقييم الكتاب{{rating}}  / 5
+                                       </td>
+                                     </tr>
+                                     <tr>
+                                       <td>
+                                                    شارك بتقيمك
+                                             {{> starsRating id=_id star='\\f005' rating=starsevent
+                                             class="js-rate-book" mutable=true size='lg'}}
+
+
+
+
+                                       </td>
+                                     </tr>
+                                   </tbody>
+                               </table>
+                         </div>
+                         <a href="/rent"><button class="rent btn-lg">استعارة</button></a>
+                         &nbsp;&nbsp;&nbsp;
+                         <a href="/purch"><button class="purch btn-lg">شراء</button></a>
+                     </div>
+                </div>
+            </div>
+         </div>
+       </div>
+    {{/with}}
+     {{#unless currentUser}}
+     <!-- Modal -->
+     <div class="modal fade" id="myModal" role="dialog">
+
+         <div class="modal-dialog">
+             <!-- Modal content-->
+             <div class="modal-body">
+                 <p>يرجى تسجيل الدخول</p>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">رجوع</button>
+                 <button type="button" id="btnlogin"  class="btn btn-default" data-dismiss="modal">تسجيل الدخول</button>
+                 <!--<button type="button" class="btn btn-default"-->
+                 <!--data-dismiss="modal">تسجيل الدخول</button>-->
+
+             </div>
+         </div>
+     </div>
+         {{/unless}}
+ </template>

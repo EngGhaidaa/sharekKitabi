@@ -1,0 +1,18 @@
+<template name="addcategorie">
+    <div class="space">
+    </div>
+    <div class="row">
+        <div class='col-md-offset-4 col-md-4'>
+            <legend>إضافة تصنيف جديد</legend>
+            {{#autoForm collection="Categories"
+            id="insertCategorieForm" type="insert"}}
+                {{> afQuickField name='title'}}
+                {{> afQuickField name='img'}}
+                <div>
+                    <button type="submit" class="btn btn-primary">إدخال</button>
+                </div>
+                {{> sAlert}}
+            {{/autoForm}}
+        </div>
+    </div>
+</template>

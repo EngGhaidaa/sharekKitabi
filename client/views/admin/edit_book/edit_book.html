@@ -1,0 +1,138 @@
+<template name="editbook">
+
+    {{> TmplModalUpdate}}
+
+    {{> TmplModalRemove}}
+<div class="row">
+    <div class="col-md-offset-1 col-md-10">
+    {{> tabular table=TabularTables.Books class="table table-striped table-bordered table-condensed "}}
+    </div>
+</div>
+    <div class="space"></div>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+    {{>addbook}}
+            </div>
+        </div>
+</template>
+
+
+<template name="BookActionBtns">
+
+    <button id="btnUpdate" type="button" class="btn btn-sm btn-default"  data-toggle="modal" data-target="#updateModal">
+
+        <span class="glyphicon glyphicon-pencil"></span>
+
+    </button>
+
+    <button id="btnRemove" type="button" class="btn btn-sm btn-default"  data-toggle="modal" data-target="#removeModal">
+
+        <span class="glyphicon glyphicon-remove"></span>
+
+    </button>
+
+</template>
+
+<template name="TmplModalRemove">
+
+    <div id="removeModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">حذف</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>هل أنت متأكد من حذف هذا الكتاب</h4>
+                    <p>{{data.title}} </p>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+
+                        <button type="button" id="confirmTrue" class="btn btn-primary" data-dismiss="modal">نعم</button>
+                        <button type="button" id="confirmFalse" class="btn btn-warning" data-dismiss="modal">لا</button>
+
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</template>
+
+
+<template name="TmplModalUpdate">
+
+    <div id="updateModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">تعديل كتاب</h4>
+                </div>
+                <div class="modal-body">
+                    {{> UpdateBookForm}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">إغلاق</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</template>
+
+<template name="UpdateBookForm">
+    {{#autoForm collection="Books" id="afUpdateBook" type="update" doc=selectedBookDoc}}
+        <fieldset>
+            {{> afQuickField name='title'}}
+            {{> afQuickField name='author'}}
+            {{> afQuickField name='publisher' }}
+            {{> afQuickField name='categorie' }}
+            {{> afQuickField name='insurance'}}
+            {{> afQuickField name='rent'}}
+            {{> afQuickField name='rentTime'}}
+            {{> afQuickField name='copiesRent'}}
+            {{> afQuickField name="purch" }}
+            {{#if afFieldValueIs name="purch" value=true}}
+                {{> afQuickField name='purchasing' }}
+                {{> afQuickField name='copiesPurchas'}}
+            {{/if}}
+
+            {{> afQuickField name='rack'}}
+            {{> afQuickField name='source'}}
+            {{> afQuickField name='img'}}
+            {{> afQuickField name='summary'}}
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Update</button>
+    {{/autoForm}}
+</template>
+
+ <template name="addbook" >
+     <legend>إضافة كتاب جديد</legend>
+            {{#autoForm collection="Books"
+            id="insertBookForm" type="insert"}}
+                {{> afQuickField name='title'}}
+                {{> afQuickField name='author'}}
+                {{> afQuickField name='publisher' }}
+                {{> afQuickField name='numberOfPages'}}
+                {{> afQuickField name='categorie' }}
+                {{> afQuickField name='insurance'}}
+                {{> afQuickField name='rent'}}
+                {{> afQuickField name='rentTime'}}
+                {{> afQuickField name='copiesRent'}}
+                {{> afQuickField name="purch" }}
+                {{#if afFieldValueIs name="purch" value=true}}
+                    {{> afQuickField name='purchasing'}}
+                    {{> afQuickField name='copiesPurchas'}}
+                {{/if}}
+                {{> afQuickField name='rack'}}
+                {{> afQuickField name='source'}}
+                {{> afQuickField name='img'}}
+                {{> afQuickField name='summary'}}
+                <div>
+                    <button type="submit" class="btn btn-primary">إدخال</button>
+                </div>
+                {{> sAlert}}
+            {{/autoForm}}
+</template>

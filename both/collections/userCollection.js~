@@ -1,0 +1,30 @@
+Users=new Mongo.Collection('users');
+userSchema = new SimpleSchema({
+    firstName: {
+        type: String,
+        label:"الاسم الأول"
+    },
+    lastName: {
+        type: String,
+        label:"اسم العائلة"
+
+    },
+    username: {
+        type: String,
+        label:"اسم المستخدم"
+
+    },
+    img:{
+        type: String,
+        optional:true,
+        label:"صورة"
+    },
+    addresses: {
+        type: [Object],
+        label: "العنوان"
+    }
+});
+
+var name = userSchema.pick(['firstName', 'lastName']);
+
+Categories.attachSchema(categorieSchema);
