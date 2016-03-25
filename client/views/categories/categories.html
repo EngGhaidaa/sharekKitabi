@@ -22,7 +22,7 @@
          <div class='col-md-offset-2 col-md-8'>
              <div class="list-group">
                  <div class="row">
-                     <!--{{>searchBox}}-->
+                     {{>searchBox}}
                      {{#each categories}}
                          <div class="col-md-4">
                              <div class="list-group-item ">
@@ -60,18 +60,12 @@
          </div>
      </div>
  </template>
- <!--<template name="searchBox">-->
-     <!--{{> EasySearch.Input index=BooksearchIndex}}-->
+ <template name="searchBox">
+     {{> EasySearch.Input index=booksIndex }}
 
-     <!--<ul>-->
-         <!--{{#EasySearch.Each index=BooksearchIndex}}-->
-             <!--<li>Name of the player: {{title}} </li>-->
-         <!--{{/EasySearch.Each}}-->
-     <!--</ul>-->
-
-     <!--{{> EasySearch.LoadMore index=BooksearchIndex}}-->
-
-     <!--{{#EasySearch.IfNoResults index=BooksearchIndex}}-->
-         <!--<div class="no-results">No results found!</div>-->
-     <!--{{/EasySearch.IfNoResults}}-->
- <!--</template>-->
+     <ul>
+         {{#EasySearch.Each index=booksIndex }}
+             <li>title of the book: {{title}}</li>
+         {{/EasySearch.Each}}
+     </ul>
+ </template>

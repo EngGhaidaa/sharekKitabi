@@ -6,6 +6,9 @@ Template.categories.helpers({
     return Books.find({categorie: this._id}).count();
   }
 });
+Template.searchBox.helpers({
+      booksIndex: () => booksIndex
+});
 ////////////
 //var pageSession = new ReactiveDict();
 //var BooksViewItems = function(cursor) {

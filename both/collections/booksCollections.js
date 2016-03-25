@@ -166,3 +166,11 @@ Books.helpers({
         return Categories.findOne(categorie).title
     }
 });
+
+
+    booksIndex = new EasySearch.Index({
+        collection: Books,
+        fields: ['title'],
+        engine: new EasySearch.MongoDB()
+    });
+
