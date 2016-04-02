@@ -11,7 +11,7 @@ Template.details.events({
 
         //console.log($(event.currentTarget).data("userrating"));
         if(!this.user)
-        {$("#myModal").modal({show: true,backdrop: true});}
+        {$("#Modellogin").modal({show: true,backdrop: true});}
 
 
         var starsevent = $(event.currentTarget).data("userrating");
@@ -20,12 +20,35 @@ Template.details.events({
         //var rating = '{rating.' + 'one' +':'+1+'}';
         Meteor.call('addRating',book_id,starsevent);
     },
+
     'click #btnlogin':function() {
-       // $("#myModal").modal({backdrop: false});
         Router.go("login");
         $('.modal-backdrop').remove();
-        //
+        },
 
+    'click #rentbtn':function(event){
+        if(!Meteor.userId())
+        { $("#Modellogin").modal({show: true,backdrop: true});
+        }
+        else
+        $("#Modelpay").modal({show: true,backdrop: true});
+    },
+
+    'click #purchbtn':function(event) {
+        if (!Meteor.userId()) {
+            $("#Modellogin").modal({show: true, backdrop: true});
+        }
+        else
+            $("#Modelpay").modal({show: true, backdrop: true});
+    },
+
+    'click #btnpaymun':function() {
+        Router.go("time");
+        $('.modal-backdrop').remove();
+    },
+
+    'click #btnpaypal':function() {
+        Router.go("paypal");
+        $('.modal-backdrop').remove();
     }
-
 });

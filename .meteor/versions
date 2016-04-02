@@ -7,6 +7,7 @@ aldeed:schema-deny@1.0.1
 aldeed:schema-index@1.0.1
 aldeed:simple-schema@1.5.3
 aldeed:tabular@1.6.0
+arunoda:npm@0.2.6
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
 babel-runtime@0.1.4
@@ -101,6 +102,7 @@ mongo-livedata@1.0.9
 mpowaga:jquery-fileupload@9.11.2
 mpowaga:jquery-ui-widget@1.11.4
 mrt:moment@2.8.1
+mrt:paypal@1.1.1
 natestrauser:font-awesome@4.5.0
 nemo64:bootstrap@3.3.5_2
 nemo64:bootstrap-data@3.3.5

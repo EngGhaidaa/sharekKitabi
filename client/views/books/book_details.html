@@ -37,6 +37,11 @@
                                        </td>
                                      </tr>
                                      <tr>
+                                         <td>
+                                             التصنيف {{categorie}}
+                                         </td>
+                                     </tr>
+                                     <tr>
                                        <td>
                                                     عدد الصفحات  {{numberOfPagese}} صفحة
                                        </td>
@@ -83,18 +88,16 @@
                                                     شارك بتقيمك
                                              {{> starsRating id=_id star='\\f005' rating=starsevent
                                              class="js-rate-book" mutable=true size='lg'}}
-
-
-
-
                                        </td>
                                      </tr>
                                    </tbody>
                                </table>
                          </div>
-                         <a href="/rent"><button class="rent btn-lg">استعارة</button></a>
+                         <a href="/rent"><button class="rent btn-lg" id="rentbtn">استعارة</button></a>
                          &nbsp;&nbsp;&nbsp;
-                         <a href="/purch"><button class="purch btn-lg">شراء</button></a>
+                         {{#if purch}}
+                              <a href="/purch"><button class="purch btn-lg" id="purchbtn">شراء</button></a>
+                        {{/if}}
                      </div>
                 </div>
             </div>
@@ -103,8 +106,7 @@
     {{/with}}
      {{#unless currentUser}}
      <!-- Modal -->
-     <div class="modal fade" id="myModal" role="dialog">
-
+     <div class="modal fade" id="Modellogin" role="dialog">
          <div class="modal-dialog">
              <!-- Modal content-->
              <div class="modal-body">
@@ -120,4 +122,20 @@
          </div>
      </div>
          {{/unless}}
+     <!-- Modal -->
+     <div class="modal fade" id="Modelpay" role="dialog">
+         <div class="modal-dialog">
+             <!-- Modal content-->
+             <!--<div class="modal-body">-->
+                 <!--<p></p>-->
+             <!--</div>-->
+             <div class="modal-footer">
+                 <button type="button" id="btnpaymun" class="btn btn-default" data-dismiss="modal">دفع باليد</button>
+                 <button type="button" id="btnpaypal"  class="btn btn-default" data-dismiss="modal">Paypal</button>
+                 <!--<button type="button" class="btn btn-default"-->
+                 <!--data-dismiss="modal">تسجيل الدخول</button>-->
+
+             </div>
+         </div>
+     </div>
  </template>

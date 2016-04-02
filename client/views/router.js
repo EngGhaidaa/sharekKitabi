@@ -208,6 +208,7 @@ Router.map(function () {
 	this.route("records",{path:"/admin/records",controller:"RecordsController"});
 	this.route("users",{path:"/admin/users",controller:"UsersController"});
 
-	this.route("rent",{path:"/rent",controller:"RentController"});
-	this.route("purch",{path:"/purch",controller:"PurchController"});
+	this.route("time",{path:"/time",controller:"TimeController"});
+	this.route("paypal",{path:"/paypal",controller:"PaypalController"});
+
 });

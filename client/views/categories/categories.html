@@ -2,27 +2,13 @@
     <div class="space">
     </div>
      <div class="row">
-         <!--////-->
-         <!--<div id="dataview-controls-search">-->
-             <!--<div id="dataview-controls-search-group" class="form-group col-md-3">-->
-                 <!--<label class="sr-only" for="search">-->
-                     <!--ابحث  عن  اسم كتاب-->
-                 <!--</label>-->
-                 <!--<input type="text" class="form-control" id="dataview-search-input"-->
-                        <!--placeholder="ابحث  عن  اسم كتاب" name="search" value="{{searchString}}"-->
-                        <!--autofocus="autofocus">-->
-                 <!--<button type="button" id="dataview-search-button" class="btn btn-primary">-->
-                                     <!--<span class="fa fa-search">-->
-                                     <!--</span>-->
-                 <!--</button>-->
-             <!--</div>-->
-
-         <!--</div>-->
-         <!--/////-->
          <div class='col-md-offset-2 col-md-8'>
              <div class="list-group">
                  <div class="row">
-                     <!--{{>searchBox}}-->
+                     <div class="col-md-3">
+                     {{>searchBox}}
+                     </div>
+                     <div class="space"></div>
                      {{#each categories}}
                          <div class="col-md-4">
                              <div class="list-group-item ">
@@ -31,23 +17,11 @@
                                          <div class="info" itemprop="image">
                                              <img class="img-responsive imgSize" src="images\1.jpg">
                                          </div>
-                                 <!-- <h5>
-                                     <span class="badge">
-                                         عدد الكتب{{booksCounter}}
-                                     </span>
-                                 </h5> -->
-
-                                 <!--<div class="more">
-                                     <a href="{{pathFor 'books' id=this._id}}" title="Title Link">
-                                         <i class="fa fa-angle-double-left"></i>  المزيد
-                                     </a>
-                                 </div>-->
-                                     </div>
+                                      </div>
                                      <div class="lecturer-data text-center ">
                                          <a href="{{pathFor 'books' id=this._id}}" title="Title Link"><h2>{{title}}</h2></a>
                                      </div>
                                  </div>
-
                              </div>
                              <div class="space">
                              </div>
@@ -60,18 +34,28 @@
          </div>
      </div>
  </template>
- <!--<template name="searchBox">-->
-     <!--{{> EasySearch.Input index=BooksearchIndex}}-->
+ <template name="searchBox">
+     {{> EasySearch.Input index=booksIndex attributes=attributes  }}
 
-     <!--<ul>-->
-         <!--{{#EasySearch.Each index=BooksearchIndex}}-->
-             <!--<li>Name of the player: {{title}} </li>-->
-         <!--{{/EasySearch.Each}}-->
-     <!--</ul>-->
 
-     <!--{{> EasySearch.LoadMore index=BooksearchIndex}}-->
+     {{#EasySearch.IfNoResults index=booksIndex  }}
+         <div>لايوجد نتائج مشابهة لبحثك !</div>
+     {{/EasySearch.IfNoResults}}
 
-     <!--{{#EasySearch.IfNoResults index=BooksearchIndex}}-->
-         <!--<div class="no-results">No results found!</div>-->
-     <!--{{/EasySearch.IfNoResults}}-->
- <!--</template>-->
+     {{#EasySearch.IfSearching index=booksIndex  }}
+         <!--logic="OR"-->
+         <div>يبحث</div>
+     {{/EasySearch.IfSearching}}
+
+
+     {{#EasySearch.Each index=booksIndex }}
+         {{#if checkInput}}
+             <div>
+                 <a href="{{pathFor 'book_details' id= this.__originalId}}" >
+                     {{title}}
+                 </a>
+             </div>
+         {{/if}}
+     {{/EasySearch.Each}}
+
+ </template>
