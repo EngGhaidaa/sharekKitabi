@@ -49,7 +49,7 @@ panel-body.panel-body .btn:not(.btn-block) {
     background-color: #f9f9f9;
 }
 .modal-body{
-    background-color: #fcf8e3;
+    /*background-color: #fcf8e3;*/
     padding:40px 50px;
     color:white !important;
     text-align: center;
