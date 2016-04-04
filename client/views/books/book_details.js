@@ -8,14 +8,11 @@ Template.details.helpers({
 
 Template.details.events({
     'click .js-rate-book': function (event) {
-
-        //console.log($(event.currentTarget).data("userrating"));
+ //console.log($(event.currentTarget).data("userrating"));
         if(!this.user)
         {$("#Modellogin").modal({show: true,backdrop: true});}
 
-
         var starsevent = $(event.currentTarget).data("userrating");
-
         var book_id = this.id;
         //var rating = '{rating.' + 'one' +':'+1+'}';
         Meteor.call('addRating',book_id,starsevent);
@@ -28,18 +25,16 @@ Template.details.events({
 
     'click #rentbtn':function(event){
         if(!Meteor.userId())
-        { $("#Modellogin").modal({show: true,backdrop: true});
-        }
+        {$("#Modellogin").modal({show: true,backdrop: true});}
         else
-        $("#Modelpay").modal({show: true,backdrop: true});
+        {   $("#Modelpay").modal({show: true,backdrop: true});}
     },
 
     'click #purchbtn':function(event) {
-        if (!Meteor.userId()) {
-            $("#Modellogin").modal({show: true, backdrop: true});
-        }
+        if(!Meteor.userId())
+        {$("#Modellogin").modal({show: true,backdrop: true});}
         else
-            $("#Modelpay").modal({show: true, backdrop: true});
+        { $("#Modelpay").modal({show: true, backdrop: true});}
     },
 
     'click #btnpaymun':function() {

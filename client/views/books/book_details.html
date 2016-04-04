@@ -93,10 +93,12 @@
                                    </tbody>
                                </table>
                          </div>
-                         <a href="/rent"><button class="rent btn-lg" id="rentbtn">استعارة</button></a>
+                        <button class="rent btn-lg" id="rentbtn">استعارة
+                        </button>
                          &nbsp;&nbsp;&nbsp;
                          {{#if purch}}
-                              <a href="/purch"><button class="purch btn-lg" id="purchbtn">شراء</button></a>
+                              <button class="purch btn-lg" id="purchbtn">شراء
+                              </button>
                         {{/if}}
                      </div>
                 </div>
@@ -107,10 +109,10 @@
      {{#unless currentUser}}
      <!-- Modal -->
      <div class="modal fade" id="Modellogin" role="dialog">
-         <div class="modal-dialog">
+         <div class="modal-dialog modal-lg">
              <!-- Modal content-->
              <div class="modal-body">
-                 <p>يرجى تسجيل الدخول</p>
+                 <p>يرجى تسجيل الدخول !!</p>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-default" data-dismiss="modal">رجوع</button>
@@ -122,18 +124,19 @@
          </div>
      </div>
          {{/unless}}
+
      <!-- Modal -->
      <div class="modal fade" id="Modelpay" role="dialog">
-         <div class="modal-dialog">
+         <div class="modal-dialog  modal-lg">
              <!-- Modal content-->
-             <!--<div class="modal-body">-->
-                 <!--<p></p>-->
-             <!--</div>-->
+             <div class="modal-body">
+                 <p>يرجى اختيار نوع الدفع !!</p>
+             </div>
              <div class="modal-footer">
                  <button type="button" id="btnpaymun" class="btn btn-default" data-dismiss="modal">دفع باليد</button>
                  <button type="button" id="btnpaypal"  class="btn btn-default" data-dismiss="modal">Paypal</button>
                  <!--<button type="button" class="btn btn-default"-->
-                 // TODO edit rent&purch
+                 <!--// TODO edit rent&purch-->
                  <!--data-dismiss="modal">تسجيل الدخول</button>-->
 
              </div>
