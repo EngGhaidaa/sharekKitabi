@@ -4,5 +4,9 @@ this.RecordsController = RouteController.extend({
 
     yieldTemplates: {
         /*YIELD_TEMPLATES*/
+    },
+    waitOn:function()
+    {
+        return [Meteor.subscribe("users"),Meteor.subscribe("rentbook"),Meteor.subscribe("purchbook")]
     }
 });

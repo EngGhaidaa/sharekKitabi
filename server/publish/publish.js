@@ -13,3 +13,12 @@ Meteor.publish('bookDetail', function (id) {
 Meteor.publish('users', function () {
     return Users.find();
 })
+Meteor.publish('rentbook', function () {
+    return Books.find({});
+})
+Meteor.publish('purchbook', function () {
+    return Books.find({});
+})
+Meteor.publish('appointments', function () {
+    return Appointments.find();
+})

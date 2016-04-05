@@ -1,3 +1,62 @@
 <template name="records">
-    {
+    <div class="row">
+        <!-- Modal -->
+        <div class="modal fade" id="Model" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-body">
+                    <p>اختار ماتريد أن تراه!!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnuser" class="btn btn-default" data-dismiss="modal">سجلات المستخدمين</button>
+                    <button type="button" id="btnbook"  class="btn btn-default" data-dismiss="modal">سجلات الكتب</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!--User-->
+<template name='users'>
+    <div class="space">
+    </div>
+    {{> TmpModalRemove}}
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            {{> tabular table=TabularTables.Users selector=selector class="table table-striped table-bordered table-condensed "}}
+        </div>
+    </div>
+</template>
+
+<template name="UserActionBtns">
+    <button id="btnRemove" type="button" class="btn btn-sm btn-default"  data-toggle="modal" data-target="#removeModal">
+        <span class="glyphicon glyphicon-remove"></span>
+    </button>
+</template>
+
+<template name="TmpModalRemove">
+    <div id="removeModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">حذف</h4>
+                </div>
+                <div class="modal-body">
+                    <h4> هل أنت متأكد من حذف هذا المستخدم</h4>
+                    <p>{{data.profile.name}} </p>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+
+                        <button type="button" id="confirmTrue" class="btn btn-primary" data-dismiss="modal">نعم</button>
+                        <button type="button" id="confirmFalse" class="btn btn-warning" data-dismiss="modal">لا</button>
+
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 </template>

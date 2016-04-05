@@ -26,7 +26,10 @@ var privateRoutes = [
 	"add_categorie",
 	"edit_book",
 	"records",
-	"users"
+	"users",
+	"times",
+	"paypal",
+	"appointment"
 ];
 
 var freeRoutes = [
@@ -185,18 +188,20 @@ Router.onBeforeAction(Router.ensureLogged, {only: privateRoutes});
 Router.onBeforeAction(Router.ensureGranted, {only: freeRoutes}); // yes, route from free zone can be restricted to specific set of user roles
 
 Router.map(function () {
-	
-	this.route("home_public", {path: "/", controller: "HomePublicController"});
-	this.route("login", {path: "/login", controller: "LoginController"});
-	this.route("register", {path: "/register", controller: "RegisterController"});
+
+	this.route("home_private", {path: "/home_private", controller: "HomePrivateController"});
 	this.route("forgot_password", {path: "/forgot_password", controller: "ForgotPasswordController"});
 	this.route("reset_password", {path: "/reset_password/:resetPasswordToken", controller: "ResetPasswordController"});
-	this.route("home_private", {path: "/home_private", controller: "HomePrivateController"});
 	this.route("user_settings", {path: "/user_settings", controller: "UserSettingsController"});
 	this.route("user_settings.profile", {path: "/user_settings/profile", controller: "UserSettingsProfileController"});
 	this.route("user_settings.change_pass", {path: "/user_settings/change_pass", controller: "UserSettingsChangePassController"});
 	this.route("logout", {path: "/logout", controller: "LogoutController"});
+	this.route("appointment",{path:"/appointment",controller:"AppointmentController"});
+	this.route("paypal",{path:"/paypal",controller:"PaypalController"});
 
+	this.route("home_public", {path: "/", controller: "HomePublicController"});
+	this.route("login", {path: "/login", controller: "LoginController"});
+	this.route("register", {path: "/register", controller: "RegisterController"});
 	this.route("categories", {path:"/categories",controller:"CategoriesController"});
 	this.route("books", {path: "/categories/:id",controller:"BooksController"});
 	this.route("book_details", {path: "/book/:id",controller:"BookDetailsController"});
@@ -206,9 +211,6 @@ Router.map(function () {
 	this.route("add_categorie",{path:"/admin/add_categorie",controller:"AddCategorieController"});
 	this.route("edit_book",{path:"/admin/edit_book",controller:"EditBookController"});
 	this.route("records",{path:"/admin/records",controller:"RecordsController"});
-	this.route("users",{path:"/admin/users",controller:"UsersController"});
-
-	this.route("time",{path:"/time",controller:"TimeController"});
-	this.route("paypal",{path:"/paypal",controller:"PaypalController"});
+	this.route("times",{path:"/admin/times",controller:"TimesController"});
 
 });

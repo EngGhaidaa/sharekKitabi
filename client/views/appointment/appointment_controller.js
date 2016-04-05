@@ -4,5 +4,9 @@ this.TimeController = RouteController.extend({
 
     yieldTemplates: {
         /*YIELD_TEMPLATES*/
+    },
+    action: function () {
+
+        this.render('time');
     }
 })
