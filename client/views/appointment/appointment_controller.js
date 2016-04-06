@@ -1,5 +1,5 @@
-this.TimeController = RouteController.extend({
-    template: "time",
+this.AppointmentController = RouteController.extend({
+    template: "appointment",
 
 
     yieldTemplates: {
@@ -7,6 +7,6 @@ this.TimeController = RouteController.extend({
     },
     action: function () {
 
-        this.render('time');
+        this.render('appointment');
     }
 })

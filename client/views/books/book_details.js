@@ -38,7 +38,7 @@ Template.details.events({
     },
 
     'click #btnpaymun':function() {
-        Router.go("time");
+        Router.go("appointment");
         $('.modal-backdrop').remove();
     },
 

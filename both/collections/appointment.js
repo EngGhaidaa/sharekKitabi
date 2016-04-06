@@ -7,9 +7,9 @@ AppointmentSchema = new SimpleSchema({
             type: 'select',
             options: function () {
                 return {
-                    Basak: "المركز",
-                    Fatih: "فاتح",
-                    Taqsem: "تقسيم"
+                    "المركز": "المركز",
+                    "فاتح": "فاتح",
+                    "تقسيم": "تقسيم"
                 }
             }
         }
@@ -23,7 +23,6 @@ AppointmentSchema = new SimpleSchema({
                     type: "datetime-local"
                 }
             }
-
     },
     book:
     {
@@ -62,13 +61,44 @@ TabularTables.Appointments = new Tabular.Table({
     collection: Appointments,
     columns: [
         {data: "place", title: "المكان"},
-        {data: "time", title: "وقت التسليم"},
+        {data: "time", title: "وقت التسليم", type:'datetime',
+            render: function (val) {
+                return moment(val).format( "dd D/MM/YYYY hh:mm:ss a");
+            }
+        },
+        //{data:"bookcounter()",title:""},
+        //{data:"bookname()",title:""},
+        //{data:"username",title:""},
+        //{data:"paytype",title:""},
 
         {
             tmpl: Meteor.isClient && Template.AppointmentActionBtns, class: "col-md-1"
         }
     ]
 });
+//Appointments.helpers({
+//    bookcounter: function ()
+// {
+//        var book = Appointments.
+//        return
+//    },
+//    bookname: function()
+// {
+//    var book=
+//    return
+// },
+//    username: function()
+// {
+//    var book=
+//    return
+// },
+//    paytype: function()
+// {
+//    var book=
+//    return
+// }
+//});
+//ToDO complait method
 
 
 
