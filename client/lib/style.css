@@ -60,4 +60,27 @@ panel-body.panel-body .btn:not(.btn-block) {
 .navbar-inverse{
     background-color:#5bc0de;
 }
+.panel .btn-group {
+    margin: 15px 0 30px;
+}
+#panelpay{
+    border: 1px solid #ddd;
+    background-color: #fcfcfc;
+}
+#tablepay{
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+#tablepay tbody tr:hover {
+    cursor: pointer;
+    background-color: #eee;
+}
 
+#tablepay tbody tr td {
+    padding: 10px;
+    vertical-align: middle;
+    border-top-color: #eee;
+}
+tbody tr.selected td {
+    background-color: #eee;
+}

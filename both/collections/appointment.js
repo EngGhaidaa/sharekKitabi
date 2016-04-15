@@ -5,19 +5,21 @@ AppointmentSchema = new SimpleSchema({
         label: "المكان",
         autoform: {
             type: 'select',
+            firstOption:'اختر مركزاً',
             options: function () {
-                return {
-                    "المركز": "المركز",
-                    "فاتح": "فاتح",
-                    "تقسيم": "تقسيم"
-                }
+                //TODO return the values from Places and map them
+                return [
+                {label:"المركز",value:"Office"},
+                {label:'الفاتح',value:"Fatih"},
+                {label: 'تقسيم',value:"Taksim"}
+                ]
             }
         }
     },
-    time:
+    date:
     {
-        type:String,
-        label:"وقت التسليم",
+        type:Date,
+        label:"وقت وتاريخ التسليم",
             autoform: {
                 afFieldInput: {
                     type: "datetime-local"
@@ -60,10 +62,12 @@ TabularTables.Appointments = new Tabular.Table({
     name: "Appointments",
     collection: Appointments,
     columns: [
-        {data: "place", title: "المكان"},
-        {data: "time", title: "وقت التسليم", type:'datetime',
+        {data: "place", title: "المكان",render: function (val) {
+// TODO fix this Display to display right name
+        }},
+        {data: "date", title: "وقت وتاريخ التسليم", type:'datetime',
             render: function (val) {
-                return moment(val).format( "dd D/MM/YYYY hh:mm:ss a");
+                return moment(val).format( " dd D/MM/YYYY hh:mm A ");
             }
         },
         //{data:"bookcounter()",title:""},
@@ -101,4 +105,9 @@ TabularTables.Appointments = new Tabular.Table({
 //ToDO complait method
 
 
+Places = new Mongo.Collection('places');
+Places.attachSchema(new SimpleSchema(
+    {
 
+    }
+))

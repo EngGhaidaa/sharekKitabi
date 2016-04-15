@@ -8,5 +8,8 @@ this.AppointmentController = RouteController.extend({
     action: function () {
 
         this.render('appointment');
+    },
+    waitOn:function(){
+        Meteor.subscribe('appointments');
     }
 })

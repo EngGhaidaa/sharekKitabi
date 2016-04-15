@@ -78,11 +78,12 @@ Helpers.integerDayOfWeekToString = function(day) {
 };
 
 Helpers.formatDate = function(date, dateFormat) {
+	//console.log(date);
 	if(!date) {
 		return "";
 	}
 
-	var f = dateFormat || "MM/DD/YYYY";
+	var f =  "dddd MM/DD/YYYY hh:mma";
 
 	if(_.isString(date)) {
 		if(date.toUpperCase() == "NOW") {

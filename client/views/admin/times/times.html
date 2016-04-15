@@ -69,7 +69,7 @@
     {{#autoForm collection="Appointments" id="afUpdateAppointment" type="update" doc=selectedAppointmentDoc}}
         <fieldset>
             {{> afQuickField name='place'}}
-            {{> afQuickField name='time'}}
+            {{> afQuickField name='date'}}
         </fieldset>
         <button type="submit" class="btn btn-primary">تعديل</button>
     {{/autoForm}}
@@ -80,7 +80,7 @@
     {{#autoForm collection="Appointments"
     id="insertAppointmentForm" type="insert"}}
         {{> afQuickField name='place'}}
-        {{> afQuickField name='time'}}
+        {{> afQuickField name='date'}}
         <div>
             <button type="submit" class="btn btn-primary">إدخال</button>
         </div>
