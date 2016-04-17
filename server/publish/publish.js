@@ -22,3 +22,6 @@ Meteor.publish('purchbook', function () {
 Meteor.publish('appointments', function () {
     return Appointments.find();
 })
+Meteor.publish('places', function () {
+    return Places.find();
+})

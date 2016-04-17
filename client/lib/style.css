@@ -40,21 +40,28 @@ panel-body.panel-body .btn:not(.btn-block) {
 
 
 .modal-header{
-    background-color: #5cb85c;
-    color:white !important;
+    /*background-color: #f2dede;*/
+    color:black !important;
     text-align: center;
     font-size: 30px;
 }
 .modal-footer {
-    background-color: #f9f9f9;
+    background-color: #ffffff;
 }
 .modal-body{
-    background-color: #245269;
+   background-color: #ffffff;
     padding:40px 50px;
-    color:white !important;
-    text-align: center;
+    color:black !important;
+    /*text-align: center;*/
 }
-
+#addModalApp .modal-header{
+    font-size: 10px;
+    text-align: right;
+}
+#addModalPl .modal-header{
+    font-size: 15px;
+    text-align: right;
+}
 
 /**/
 .navbar-inverse{
@@ -83,4 +90,22 @@ panel-body.panel-body .btn:not(.btn-block) {
 }
 tbody tr.selected td {
     background-color: #eee;
+}
+#accordion .panel-heading { padding: 0;}
+#accordion .panel-title > a {
+    display: block;
+    padding: 0.4em 0.6em;
+    outline: none;
+    font-weight:bold;
+    text-decoration: none;
+}
+
+#accordion .panel-title > a.accordion-toggle::before, #accordion a[data-toggle="collapse"]::before  {
+    content:"\e113";
+    float: left;
+    font-family: 'Glyphicons Halflings';
+    margin-right :1em;
+}
+#accordion .panel-title > a.accordion-toggle.collapsed::before, #accordion a.collapsed[data-toggle="collapse"]::before  {
+    content:"\e114";
 }

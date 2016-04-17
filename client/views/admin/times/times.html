@@ -1,39 +1,152 @@
 <template name="times">
-    {{> TmplModalUpdate2}}
-    {{> TmplModalRemove2}}
     <div class="row">
-        <div class="col-md-offset-1 col-md-10">
-            {{> tabular table=TabularTables.Appointments class="table table-striped table-bordered table-condensed "}}
+        <div class="space"></div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel-group" id="accordion_reg" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="editappoint">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion_reg" href="#editappointment" aria-expanded="true" aria-controls="editappointment">
+                                المواعيد المتوفرة
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="editappointment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="editappoint">
+                        <div class="panel-body">
+                            {{> tabular table=TabularTables.Appointments class="table table-striped table-bordered table-condensed "}}
+                            <div class="space"></div>
+                            <button id="btnadddApp" type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                    data-target="#addModalApp">
+                                إضافة موعد
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="editplace">
+                        <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion_reg" href="#editplaces" aria-expanded="false"
+                       aria-controls="editplaces">
+                        الأماكن الموجودة
+                    </a>
+                </h4>
+            </div>
+            <!--tabular for place-->
+                <div id="editplaces" class="panel-collapse collapse" role="tabpanel" aria-labelledby="editplace">
+                    <div class="panel-body">
+                        {{> tabular table=TabularTables.Places class="table table-striped table-bordered table-condensed"}}
+                        <div class="space"></div>
+                        <button id="btnadddPl" type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                data-target="#addModalPl">
+                            إضافة مكان
+                        </button>
+                    </div>
+                </div>
+            </div>
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading" role="tab" id="addplac">-->
+                <!--<h4 class="panel-title">-->
+                    <!--<a data-toggle="collapse" data-parent="#accordion_reg" href="#addplace" aria-expanded="false" aria-controls="addplace">-->
+                        <!--إضافة مكان جديد-->
+                    <!--</a>-->
+                <!--</h4>-->
+            <!--</div>-->
+            <!--<div id="addplace" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addplac">-->
+                <!--<div class="panel-body">-->
+                    <!--{{> addplace }}-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading" role="tab" id="addappoint">-->
+                <!--<h4 class="panel-title">-->
+                    <!--<a data-toggle="collapse" data-parent="#accordion_reg" href="#addappointment" aria-expanded="false" aria-controls="addappointment">-->
+                        <!--إضافة موعد جديد-->
+                    <!--</a>-->
+                <!--</h4>-->
+            <!--</div>-->
+            <!--<div id="addappointment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addappoint">-->
+                <!--<div class="panel-body">-->
+                    <!--{{> addappointment }}-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+                <div id="addModalApp" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                <legend>إضافة موعد جديد</legend>
+                {{#autoForm collection="Appointments"
+                id="insertAppointmentForm" type="insert"}}
+                    {{> afQuickField name='place'}}
+                    {{> afQuickField name='date'}}
+                    <div>
+                        <button type="submit" class="btn btn-primary" id="submitApp">إدخال</button>
+                    </div>
+                    {{> sAlert}}
+                {{/autoForm}}
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            <!---->
+                <!---->
+                <div id="addModalPl" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <legend>إضافة مكان جديد</legend>
+                                {{#autoForm collection="Places" id="insertPlaceForm" type="insert"}}
+                                    {{> afQuickField name='title'}}
+                                    {{> afQuickField name='details'}}
+                                    <div>
+                                        <button type="submit" class="btn btn-primary" id="submitpl">إدخال</button>
+                                    </div>
+                                    {{> sAlert}}
+                                {{/autoForm}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---->
+            {{> TmplModalUpdate2}}
+            {{> TmplModalRemove2}}
+            <!---->
+            {{> TmplModalUpdate3}}
+            {{> TmplModalRemove3}}
         </div>
-    </div>
-    <div class="space">
-    </div>
-    <div class="row">
-        <div class="col-md-offset-1 col-md-10">
-            {{> addappointment }}
-        </div>
+            </div>
     </div>
 </template>
+<!--------------------------------------->
+<!--appoinbtn-->
 <template name="AppointmentActionBtns">
-    <button id="btnUpdate" type="button" class="btn btn-sm btn-default"  data-toggle="modal" data-target="#updateModal">
+    <button id="btnUpdateApp" type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#updateModalApp">
         <span class="glyphicon glyphicon-pencil"></span>
     </button>
-    <button id="btnRemove" type="button" class="btn btn-sm btn-default"  data-toggle="modal" data-target="#removeModal">
+    <button id="btnRemoveApp" type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#removeModalApp">
         <span class="glyphicon glyphicon-remove"></span>
     </button>
 </template>
 
+<!--TmplModalRemove2-->
 <template name="TmplModalRemove2">
-    <div id="removeModal" class="modal fade">
+    <div id="removeModalApp" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">حذف</h4>
                 </div>
                 <div class="modal-body">
                     <h4>هل أنت متأكد من حذف هذا الموعد</h4>
-                    <!--<p>{{data.title}} </p>-->
+                    <p>{{data.title}} </p>
                 </div>
                 <div class="modal-footer">
                     <div class="form-group">
@@ -46,12 +159,14 @@
     </div><!-- /.modal -->
 </template>
 
+<!--TmplModalUpdate2-->
 <template name="TmplModalUpdate2">
-    <div id="updateModal" class="modal fade">
+    <div id="updateModalApp" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">تعديل الموعد</h4>
                 </div>
                 <div class="modal-body">
@@ -65,6 +180,7 @@
     </div><!-- /.modal -->
 </template>
 
+<!--UpdateAppointmentForm-->
 <template name="UpdateAppointmentForm">
     {{#autoForm collection="Appointments" id="afUpdateAppointment" type="update" doc=selectedAppointmentDoc}}
         <fieldset>
@@ -75,15 +191,80 @@
     {{/autoForm}}
 </template>
 
+<!--addppointment-->
 <template name="addappointment" >
-    <legend>إضافة موعد جديد</legend>
-    {{#autoForm collection="Appointments"
-    id="insertAppointmentForm" type="insert"}}
-        {{> afQuickField name='place'}}
-        {{> afQuickField name='date'}}
-        <div>
-            <button type="submit" class="btn btn-primary">إدخال</button>
-        </div>
-        {{> sAlert}}
+
+</template>
+<!-------------------------------------->
+<!--Place-->
+<!--addplace-->
+<template name="addplace" >
+
+</template>
+
+<!--placebtn-->
+<template name="PlaceActionBtns">
+    <button id="btnUpdatePl" type="button" class="btn btn-sm btn-default"  data-toggle="modal" data-target="#updateModalPl">
+        <span class="glyphicon glyphicon-pencil"></span>
+    </button>
+    <button id="btnRemovePl" type="button" class="btn btn-sm btn-default"  data-toggle="modal" data-target="#removeModalPl">
+        <span class="glyphicon glyphicon-remove"></span>
+    </button>
+</template>
+
+<!--TmplModalRemove3-->
+<template name="TmplModalRemove3">
+    <div id="removeModalPl" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">حذف</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>هل أنت متأكد من حذف هذا المكان</h4>
+                    <p>{{data.title}} </p>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <button type="button" id="confirmTrue" class="btn btn-primary" data-dismiss="modal">نعم</button>
+                        <button type="button" id="confirmFalse" class="btn btn-warning" data-dismiss="modal">لا</button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</template>
+
+<!--TmplModalUpdate3-->
+<template name="TmplModalUpdate3">
+    <div id="updateModalPl" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">تعديل المكان</h4>
+                </div>
+                <div class="modal-body">
+                    {{> UpdatePlaceForm}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">إغلاق</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</template>
+
+<!--UpdatePlaceForm-->
+<template name="UpdatePlaceForm">
+    {{#autoForm collection="Places" id="afUpdatePlace" type="update" doc=selectedPlaceDoc}}
+        <fieldset>
+            {{> afQuickField name='title'}}
+            {{> afQuickField name='details'}}
+        </fieldset>
+        <button type="submit" class="btn btn-primary">تعديل</button>
     {{/autoForm}}
 </template>

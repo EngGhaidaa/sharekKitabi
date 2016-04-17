@@ -5,15 +5,12 @@ AppointmentSchema = new SimpleSchema({
         label: "المكان",
         autoform: {
             type: 'select',
-            firstOption:'اختر مركزاً',
             options: function () {
-                //TODO return the values from Places and map them
-                return [
-                {label:"المركز",value:"Office"},
-                {label:'الفاتح',value:"Fatih"},
-                {label: 'تقسيم',value:"Taksim"}
-                ]
-            }
+                return Places.find().map(function (c) {
+                    return {label: c.title, value: c._id}
+                })
+            },
+            firstOption: 'اختر المكان المناسب'
         }
     },
     date:
@@ -62,9 +59,7 @@ TabularTables.Appointments = new Tabular.Table({
     name: "Appointments",
     collection: Appointments,
     columns: [
-        {data: "place", title: "المكان",render: function (val) {
-// TODO fix this Display to display right name
-        }},
+        {data: "placename()", title: "المكان"},
         {data: "date", title: "وقت وتاريخ التسليم", type:'datetime',
             render: function (val) {
                 return moment(val).format( " dd D/MM/YYYY hh:mm A ");
@@ -102,12 +97,14 @@ TabularTables.Appointments = new Tabular.Table({
 //    return
 // }
 //});
-//ToDO complait method
 
-
-Places = new Mongo.Collection('places');
-Places.attachSchema(new SimpleSchema(
-    {
-
+Appointments.helpers({
+    placename: function () {
+        var idapp = Appointments.findOne(this._id);
+        var idpl=Appointments.findOne(idapp._id).place;
+        return Places.findOne(idpl)?Places.findOne(idpl).title:"unknown";
     }
-))
+});
+
+
+
