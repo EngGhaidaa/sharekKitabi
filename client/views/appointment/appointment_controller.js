@@ -10,6 +10,6 @@ this.AppointmentController = RouteController.extend({
         this.render('appointment');
     },
     waitOn:function(){
-        Meteor.subscribe('appointments');
+       return[ Meteor.subscribe('appointments'),Meteor.subscribe('places')];
     }
 })

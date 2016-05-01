@@ -22,8 +22,8 @@ Meteor.startup(function () {
             var bookid = Books.insert({
                 title: ('كتاب' + i), author: ('مؤلف ' + i), publisher: ('ناشر' + i),
                 numberOfPages: (i), summary: 'dadada', categorie: categoriesArray[i]._id,
-                insurance: '2', purchasing: '0', rent: '21', rentTime: '12', purch: true,
-                copiesPurchas: '0', copiesRent: '12', rack: (i), source: ('شارك كتابي'), rating: "1"
+                insurance: '2', purchasing: '1', rent: '21', rentTime: '12', purch: true,
+                copiesPurchas: '1', copiesRent: '12', rack: (i), source: ('شارك كتابي'), rating: "1",img:"i"
             }, function (err, result) {
                 if (!err) {
                     Ratings.insert({bookId: result});

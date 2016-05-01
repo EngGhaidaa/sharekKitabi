@@ -24,24 +24,28 @@
             });
             Books.remove({_id: Session.get('bookID')});
         }
+        location.reload();
     }
+
 });
 
  AutoForm.addHooks('afUpdateBook', {
      before: {
          update:
          function(doc){
-             if(!doc.$set.purch)
-             {
-                 doc.$unset.purchasing=0
-                    doc.$unset.copiesPurchas=0
+             if(!doc.$set.purch) {
+                 doc.$set.purchasing = 0;
+                 doc.$set.copiesPurchas = 0;
+                 }
+             else {
+                  {
+                      //   if (doc.$set.purch && doc.$set.purchasing == 0 && doc.$set.copiesPurchas == 0)
+                      //      // SimpleSchema.messages({m: "Wrong password"});
+                      //myContext.addInvalidKeys([{name: "password", type: "wrongPassword"}]);
+                 }
              }
-             else
-             {
 
-             }
-             return doc;
-
+                 return doc;
          }
      },
 

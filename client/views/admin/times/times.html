@@ -13,7 +13,7 @@
                     </div>
                     <div id="editappointment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="editappoint">
                         <div class="panel-body">
-                            {{> tabular table=TabularTables.Appointments class="table table-striped table-bordered table-condensed "}}
+                            {{> tabular table=TabularTables.Appointments class="table table-striped table-bordered table-condensed" id="tabapp"}}
                             <div class="space"></div>
                             <button id="btnadddApp" type="button" class="btn btn-sm btn-danger" data-toggle="modal"
                                     data-target="#addModalApp">
@@ -43,35 +43,6 @@
                     </div>
                 </div>
             </div>
-        <!--<div class="panel panel-default">-->
-            <!--<div class="panel-heading" role="tab" id="addplac">-->
-                <!--<h4 class="panel-title">-->
-                    <!--<a data-toggle="collapse" data-parent="#accordion_reg" href="#addplace" aria-expanded="false" aria-controls="addplace">-->
-                        <!--إضافة مكان جديد-->
-                    <!--</a>-->
-                <!--</h4>-->
-            <!--</div>-->
-            <!--<div id="addplace" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addplac">-->
-                <!--<div class="panel-body">-->
-                    <!--{{> addplace }}-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="panel panel-default">-->
-            <!--<div class="panel-heading" role="tab" id="addappoint">-->
-                <!--<h4 class="panel-title">-->
-                    <!--<a data-toggle="collapse" data-parent="#accordion_reg" href="#addappointment" aria-expanded="false" aria-controls="addappointment">-->
-                        <!--إضافة موعد جديد-->
-                    <!--</a>-->
-                <!--</h4>-->
-            <!--</div>-->
-            <!--<div id="addappointment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addappoint">-->
-                <!--<div class="panel-body">-->
-                    <!--{{> addappointment }}-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
                 <div id="addModalApp" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">

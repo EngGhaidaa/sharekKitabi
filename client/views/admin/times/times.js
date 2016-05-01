@@ -49,7 +49,6 @@ AutoForm.hooks({
     insertAppointmentForm :{
         onSuccess:
             function (formType, result) {
-                $("#addeModalApp").modal({show: false});
             sAlert.success('تم الإضافة بنجاح', {
                 effect: 'genie', position: 'top-right',
                 timeout: '500', onRouteClose: false,
@@ -81,12 +80,16 @@ Template.TmplModalRemove3.events({
             var msg = data.title;
             toastr.success(msg, t,{
                 positionClass: "toast-top-center",
-                timeOut: "500"
+                timeOut: "900"
             });
             Places.remove({_id: Session.get('placeID')}, function (err,result) {
                 if(!err)
                 {
                    Meteor.call('deleteAppointmentForPlace',Session.get('placeID'));
+                    location.reload();
+                    //Appointments.remove({_id: Session.get('placeID')});
+                    //table = $('#tabapp').DataTable();
+                    //table.draw();
                 }
             });
 
@@ -115,7 +118,6 @@ AutoForm.hooks({
     insertPlaceForm :{
         onSuccess:
             function (formType, result) {
-                $("#addeModalPl").modal({show: false});
             sAlert.success('تم الإضافة بنجاح', {
                 effect: 'genie', position: 'top-right',
                 timeout: '500', onRouteClose: false,

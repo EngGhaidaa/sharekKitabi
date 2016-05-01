@@ -1,44 +1,70 @@
 <template name="appointment">
-   <div class="container">
-      <div class="row">
+    <div class="container">
+        <div class="row">
             <h1>المواعيد المتوفرة
             </h1>
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default" id="panelpay">
-                       <div class="panel-body">
-                           <div class="pull-right">
-                               <div class="btn-group">
-                                   <button type="button" class="btn btn-success btn-filter" id="btnbasak"
-                                       data-target="Basak">
-                                       المركز(باشاك شهير )
-                                   </button>
-                                   <button type="button" class="btn btn-warning btn-filter" data-target="Fatih">
-                                       منطقة الفاتح
-                                   </button>
-                                   <button type="button"  class="btn btn-danger btn-filter" data-target="Taksim">
-                                       منطقة تقسيم
-                                   </button>
-                               </div>
-                           </div>
-                           <div class="table-container">
-                           {{#each appointments}}
-                               <table class="table table-filter" id="tablepay">
-                                   <tbody>
-                                        <tr>
-                                            <td>
-                                                {{getPlaceName place}}
-                                               <br>
-                                                {{formatDate date}}
-                                             </td>
-                                         </tr>
-                                   </tbody>
-                               </table>
-                           {{/each}}
-                           </div>
-                       </div>
+                    <div class="panel-body">
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-filter" id="placebtn"
+                                        data-target="{{_id}}">
+                                    المواعيد المتوفرة
+                                    </button>
+                                {{#each places}}
+                                <button type="button" class="btn btn-default btn-filter" id="btnplace"
+                                        data-target="{{_id}}">
+                                   {{title}}
+                                </button>
+                                {{/each}}
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            {{#each appointments}}
+                                <table class="table table-filter" id="tablepay">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            {{getPlaceName place}}
+                                            <br>
+                                            {{formatDate date}}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            {{else}}
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                          لايوجد مواعيد في هذا المكان حالياً
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            {{/each}}
+                        </div>
+                    </div>
                 </div>
             </div>
-      </div>
-   </div>
-         <!--ToDo complite table-->
+        </div>
+        </div>
+    <!-- Modal -->
+    <div class="modal fade" id="Modelaccept" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-body">
+                <p>تم تثبيت الموعد..شكراً لزيارتك !!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">رجوع</button>
+                <button type="button" id="btnlogin"  class="btn btn-default" data-dismiss="modal">تسجيل الدخول</button>
+                <!--<button type="button" class="btn btn-default"-->
+                <!--data-dismiss="modal">تسجيل الدخول</button>-->
+
+            </div>
+        </div>
+    </div>
+    <!--ToDo complite table-->
 </template>

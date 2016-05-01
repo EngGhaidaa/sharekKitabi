@@ -102,7 +102,7 @@ Appointments.helpers({
     placename: function () {
         var idapp = Appointments.findOne(this._id);
         var idpl=Appointments.findOne(idapp._id).place;
-        return Places.findOne(idpl)?Places.findOne(idpl).title:"unknown";
+        return Places.findOne(idpl)?Places.findOne(idpl).title:Meteor.call('deleteAppointmentForPlace',idpl);
     }
 });
 

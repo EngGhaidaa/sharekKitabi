@@ -109,3 +109,7 @@ tbody tr.selected td {
 #accordion .panel-title > a.accordion-toggle.collapsed::before, #accordion a.collapsed[data-toggle="collapse"]::before  {
     content:"\e114";
 }
+.btn .active
+{
+    color:#8a6d3b;
+}

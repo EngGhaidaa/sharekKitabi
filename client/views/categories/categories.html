@@ -10,6 +10,7 @@
                      </div>
                      <div class="space"></div>
                      {{#each categories}}
+                         {{#if booksCounter}}
                          <div class="col-md-4">
                              <div class="list-group-item ">
                                  <div class="icon">
@@ -28,6 +29,7 @@
                              <div class="space">
                              </div>
                          </div>
+                         {{/if}}
                      {{/each}}
                  </div>
              </div>
@@ -35,6 +37,7 @@
      </div>
  </template>
  <template name="searchBox">
+     <div class="search">
      {{> EasySearch.Input index=booksIndex attributes=attributes  }}
 
 
@@ -57,5 +60,5 @@
              </div>
          {{/if}}
      {{/EasySearch.Each}}
-
+     </div>
  </template>

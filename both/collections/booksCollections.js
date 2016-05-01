@@ -162,8 +162,11 @@ TabularTables.Books = new Tabular.Table({
 
 Books.helpers({
     categorieName: function () {
-        var categorie = Books.findOne(this._id).categorie;
-        return Categories.findOne(categorie).title
+        //var categorie = Books.findOne(this._id).categorie;
+        //return Categories.findOne(categorie).title
+        var idcata = Books.findOne(this._id);
+        var idbok=Books.findOne(idcata._id).categorie;
+        return Categories.findOne(idbok).title;
     }
 });
 
