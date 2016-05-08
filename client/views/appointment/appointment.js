@@ -18,6 +18,12 @@ function formatDate(date) {
 
     return moment(date).format(f);
 }
+var app_id;
+var placeid;
+var u;
+var pa;
+var b;
+var dat;
 
 
 Template.appointment.helpers
@@ -66,14 +72,23 @@ Template.appointment.events({
    'click #tablepay tbody tr' :function()
    {
        //var table = $('#tablepay').DataTable();
-       console.log("ok");
-       var p= Places.findOne(this.place).title;
-       var d=formatDate(this.date);
-       console.log(p + d );
-       {$("#Modelaccept").modal({show: true,backdrop: true});}
+       //console.log("ok");
+       placeid= Places.findOne(this.place);
+       dat=this.date;
+       app_id=this._id;
+        u=Meteor.userId();
+        b=Router.current().params.bookid;
+       pa=Router.current().params.payb;
+       //console.log(a+"&&"+u+"&&"+b+"&&"+pa );
+       {$("#Modelaccept").modal({show: true,backdrop: "static"});}
+
    },
     'click #placebtn': function()
     {
      Session.set('appointCenter',null);
-    }
+    },
+   'click #btnsub':function()
+   {
+       Meteor.call('editappointment',app_id,placeid,dat,u,pa,b)
+   }
 });

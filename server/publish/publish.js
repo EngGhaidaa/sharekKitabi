@@ -25,3 +25,9 @@ Meteor.publish('appointments', function () {
 Meteor.publish('places', function () {
     return Places.find();
 })
+Meteor.publish('bookappoin', function (bookid) {
+    return Books.find({_id:bookid});
+})
+//Meteor.publish('bookpay', function (bookid,pay) {
+//    return Books.find({_id:bookid});
+//})

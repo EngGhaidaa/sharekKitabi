@@ -23,6 +23,7 @@ Template.TmplModalRemove2.events({
                 timeOut: "500"
             });
             Appointments.remove({_id: Session.get('appointmentID')});
+            location.reload();
         }
     }
 });
@@ -128,11 +129,61 @@ AutoForm.hooks({
 });
 Template.times.events
 ({
-    "click #btnadddApp":function(){
+    "click #btnadddApp": function () {
         $('#addeModalApp').modal('show')
     },
-    "click #btnadddPl":function(){
+    "click #btnadddPl": function () {
         $('#addeModalPl').modal('show')
+    },
+    "click #a": function ()
+    {
+    }
+})
+
+Template.times.helpers
+({
+    bookapp: function () {
+        if(Appointments.find('user.value'))
+        return true;
+    },
+    appointments: function () {
+        if(Appointments.find('user.value')!=null)
+        { return Appointments.find();}
+    },
+    //app:function(){
+    //    if(Appointments.find('user.book').)
+    //    return true;
+    //},
+    //,'user.book','user.pay')
+    getPlaceName: function (place)
+    {
+        return Places.findOne(place).title;
+    },
+    bookcounter: function ()
+    {
+        var booknum = Appointments.find('user.book').count();
+        return booknum;
+    },
+    bookname: function()
+    {
+        var bookname=Books.findOne('user.book').title;
+        return bookname;
+    },
+    username: function()
+    {
+        if(Books.findOne('user.value'))
+        {  var username=Users.findOne('user.value').profile.name;
+            return username;}
+    },
+    paytype: function()
+    {
+        var type;
+        var paytyp=Appointments.find('user.pay');
+        if (paytyp.substring(0)=="t")
+            type='دفع يدوي';
+        else
+            type='تم الدفع';
+        return type;
     }
 })
 //TODO edit delete app& hide modal add

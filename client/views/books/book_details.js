@@ -3,7 +3,6 @@ Template.details.helpers({
         return Books.findOne({_id: Router.current().params.id});
     },
 
-
 });
 
 Template.details.events({
@@ -38,12 +37,15 @@ Template.details.events({
     },
 
     'click #btnpaymun':function() {
-        Router.go("appointment");
+        var z=Router.current().params.id;
+        console.log(z);
+        Router.go("appointment",{bookid:z,payb:true});
         $('.modal-backdrop').remove();
     },
 
     'click #btnpaypal':function() {
-        Router.go("paypal");
+        var z=Router.current().params.id;
+        Router.go("paypal",{bookid:z,payb:false});
         $('.modal-backdrop').remove();
     }
 });

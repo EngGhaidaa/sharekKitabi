@@ -2,7 +2,46 @@
     <div class="row">
         <div class="space"></div>
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel-group" id="accordion_reg" role="tablist" aria-multiselectable="true">
+                {{#if bookapp}}
+                <button data-toggle="collapse" data-parent="#accordion_reg" href="#appbook" aria-expanded="true"
+               aria-controls="appbook" id="a">
+                الكتب المراد تسليمها بموعد محدد
+                </button>
+                <div id="appbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="appbook">
+                    <div class="panel-body">
+                        <table  class="table table-striped">
+                            {{#each appointments}}
+                                <!--{{#if app}}-->
+                            <tr>
+                            <td>
+                                    {{getPlaceName place}}
+                            </td>
+                            </tr>
+                            <tr><td>
+                                    {{formatDate date}}
+                            </td></tr>
+                                            {{#each this.user}}
+                                            <tr><td>
+                                             {{username this.value}}
+                                             </td></tr>
+                                                <tr><td>
+                                                {{bookcounter this.book}}
+                                            </td></tr>
+                                              <tr><td>
+                                               {{bookname this.book}}
+                                               </td></tr>
+                                               <tr><td>
+                                               {{paytype this.pay}}
+                                               </td></tr>
+                                               {{/each}}
+                                <!--{{/if}}-->
+                {{/each}}
+                </table>
+                </div>
+                </div>
+                    {{/if}}
+          <br><br>
+            <div class="panel-group" id="accordion_reg" role="tablist" aria-multiselectable="false">
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="editappoint">
                         <h4 class="panel-title">

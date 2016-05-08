@@ -41,6 +41,26 @@ Meteor.methods({
         Books.update({_id: bookId}, {$set: {rating: parseInt(rating)}});
         //TODO to adjust this algorithm to manipulate if only one rating from on user what will happen
 
+    },
+    editappointment:function(app_id,placeid,dat,u,pa,b)
+    {
+        if(Appointments.find({_id:app_id})&&Appointments.find('user.value').fetch().length==0)
+        {
+            Appointments.upsert({_id: app_id,place:placeid._id,date:dat},
+                {
+                    $push: {
+                        user: {
+                            value: u,
+                            pay: pa,
+                            book: b
+                        }
+                    }
+                })
+        }
+        else
+        {
+            Appointments.update({_id: app_id}, {$set: {'user.$.book':b,'user.$.value':u,'user.$.pay':pa}});
+        }
     }
 
 
