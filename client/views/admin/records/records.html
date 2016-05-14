@@ -1,28 +1,98 @@
 <template name="records">
     <div class="row">
-        <!-- Modal -->
-        <div class="modal fade" id="Model" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-body">
+        <div class="space"></div>
+        <div class='col-md-8 col-md-offset-2'>
                     <p>اختار ماتريد أن تراه!!</p>
+            <div class="panel-group" id="accordion_reg" role="tablist" aria-multiselectable="false">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="editappoint">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion_reg" href="#usersrecords" aria-expanded="true" aria-controls="usersrecords">
+                                سجلات المستخدمين
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="usersrecords" class="panel-collapse collapse" role="tabpanel" aria-labelledby="usersrecords">
+                        <div class="panel-body">
+                            {{> tabular table=TabularTables.Users selector=selector class="table table-striped table-bordered table-condensed"}}
+                            <div class="space"></div>
+                            {{> TmpModalRemove}}
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" id="btnuser" class="btn btn-default" data-dismiss="modal">سجلات المستخدمين</button>
-                    <button type="button" id="btnbook"  class="btn btn-default" data-dismiss="modal">سجلات الكتب</button>
+                <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="editappoint">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion_reg" href="#booksrecordsrent" aria-expanded="true" aria-controls="booksrecordsrent">
+                   سجلات االكتب المستعارة
+                    </a>
+                </h4>
+            </div>
+            <div id="booksrecordsrent" class="panel-collapse collapse" role="tabpanel" aria-labelledby="booksrecordsrent">
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        {{#each booksrent}}
+                                <thead>
+                                <tr>
+                                    <th>
+                                        {{title}}
+                                    </th>
+                                </tr>
+                                </thead>
+                            {{#each this.renting}}
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        {{username this.user}}
+                                    </td>
+                                    <td>
+                                        {{username this.now}}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            {{/each}}
+                            {{/each}}
+                        </table>
                 </div>
             </div>
         </div>
-    </div>
-</template>
-
-<!--User-->
-<template name='users'>
-    <div class="space">
-    </div>
-    {{> TmpModalRemove}}
-    <div class="row">
-        <div class="col-md-offset-1 col-md-10">
-            {{> tabular table=TabularTables.Users selector=selector class="table table-striped table-bordered table-condensed "}}
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="editappoint">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion_reg" href="#booksrecords" aria-expanded="true" aria-controls="booksrecords">
+                                سجلات الكتب المباعة
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="booksrecords" class="panel-collapse collapse" role="tabpanel" aria-labelledby="booksrecords">
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                {{#each bookspurch}}
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            {{title}}
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    {{#each this.purching}}
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                {{username this.user}}
+                                            </td>
+                                            <td>
+                                                {{username this.now}}
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    {{/each}}
+                                {{/each}}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -58,5 +128,4 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
 </template>

@@ -1,5 +1,9 @@
 Appointments=new Mongo.Collection('appointments');
 AppointmentSchema = new SimpleSchema({
+    can:{
+        type:Boolean,
+        defaultValue:false
+    },
     place: {
         type: String,
         label: "المكان",
@@ -33,7 +37,7 @@ AppointmentSchema = new SimpleSchema({
       type:Object,
       optional: true
     },
-    'user.$.value':
+    'user.$.id':
     {
         type:String,
         custom: function () {

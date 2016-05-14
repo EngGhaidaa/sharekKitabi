@@ -2,44 +2,51 @@
     <div class="row">
         <div class="space"></div>
         <div class="col-md-8 col-md-offset-2">
-                {{#if bookapp}}
+                <!--{{#if bookapp}}-->
                 <button data-toggle="collapse" data-parent="#accordion_reg" href="#appbook" aria-expanded="true"
                aria-controls="appbook" id="a">
                 الكتب المراد تسليمها بموعد محدد
                 </button>
                 <div id="appbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="appbook">
-                    <div class="panel-body">
+                        <div class="lib-row lib-desc">
                         <table  class="table table-striped">
                             {{#each appointments}}
-                                <!--{{#if app}}-->
-                            <tr>
-                            <td>
-                                    {{getPlaceName place}}
-                            </td>
-                            </tr>
-                            <tr><td>
-                                    {{formatDate date}}
-                            </td></tr>
+                                <!--{{#if can}}-->
+                                    <thead>
+                                <tr>
+                            <th>
+                                {{getPlaceName place}}
+                                </th>
+                                <th>
+                                {{formatDate date}}
+                                </th>
+                                </tr>
+                                </thead>
                                             {{#each this.user}}
-                                            <tr><td>
-                                             {{username this.value}}
-                                             </td></tr>
-                                                <tr><td>
-                                                {{bookcounter this.book}}
-                                            </td></tr>
-                                              <tr><td>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                    {{userna this.id}}
+                                                </td>
+
+                                                <td>
+                                                {{bookcounter this._id}}
+                                                </td>
+                                              <td>
                                                {{bookname this.book}}
-                                               </td></tr>
-                                               <tr><td>
+                                               </td>
+                                               <td>
                                                {{paytype this.pay}}
-                                               </td></tr>
+                                               </td>
+                                                </tr>
+                                            </tbody>
                                                {{/each}}
                                 <!--{{/if}}-->
                 {{/each}}
                 </table>
                 </div>
                 </div>
-                    {{/if}}
+                    <!--{{/if}}-->
           <br><br>
             <div class="panel-group" id="accordion_reg" role="tablist" aria-multiselectable="false">
                 <div class="panel panel-default">

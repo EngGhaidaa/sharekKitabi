@@ -197,7 +197,7 @@ Router.map(function () {
 	this.route("user_settings.change_pass", {path: "/user_settings/change_pass", controller: "UserSettingsChangePassController"});
 	this.route("logout", {path: "/logout", controller: "LogoutController"});
 	this.route("appointment",{path:"/appointment/:bookid/:payb",controller:"AppointmentController"});
-	this.route("paypal",{path:"/paypal",controller:"PaypalController"});
+	this.route("paypal",{path:"/paypal/:bookid/:payb/:",controller:"PaypalController"});
 
 	this.route("home_public", {path: "/", controller: "HomePublicController"});
 	this.route("login", {path: "/login", controller: "LoginController"});

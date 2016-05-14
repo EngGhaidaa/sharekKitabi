@@ -114,8 +114,53 @@ BookSchema = new SimpleSchema({
                 "5": 5
             }
         }
+    },
+    renting:
+    {
+     type:[Object],
+        optional:true
+    },
+    'renting.$':
+    {
+        type:Object,
+        optional: true
+    },
+    'renting.$.value':
+    {
+        type:Boolean,
+        defaultValue:false
+    },
+    'renting.user':
+    {
+        type:String
+    },
+    'renting.now':
+    {
+        type:String
+    },
+    purching:
+    {
+        type:[Object],
+        optional:true
+    },
+    'purching.$':
+    {
+        type:Object,
+        optional: true
+    },
+    'purching.$.value':
+    {
+        type:Boolean,
+        defaultValue:false
+    },
+    'purching.user':
+    {
+        type:String
+    },
+    'purching.now':
+    {
+        type:String
     }
-
 });
 Books.attachSchema(BookSchema);
 Books.allow({
@@ -159,6 +204,23 @@ TabularTables.Books = new Tabular.Table({
     ]
 });
 
+//TabularTables = {};
+//TabularTables.Books = new Tabular.Table({
+//    name: "BooksRecourdsRent",
+//    collection: Books,
+//    columns: [
+//        {data: "title", title: "اسم الكتاب"},
+//        {data:}
+//    ]
+//})
+//TabularTables = {};
+//TabularTables.Books = new Tabular.Table({
+//    name: "BooksRecourdsPurch",
+//    collection: Books,
+//    columns: [
+//        {data: "title", title: "اسم الكتاب"},
+//    ]
+//})
 
 Books.helpers({
     categorieName: function () {

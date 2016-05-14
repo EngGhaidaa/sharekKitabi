@@ -14,10 +14,10 @@ Meteor.publish('users', function () {
     return Users.find();
 })
 Meteor.publish('rentbook', function () {
-    return Books.find({});
+    return Books.find({'renting.value':true});
 })
 Meteor.publish('purchbook', function () {
-    return Books.find({});
+    return Books.find({'purching.value':true});
 })
 Meteor.publish('appointments', function () {
     return Appointments.find();

@@ -1,10 +1,20 @@
-$("#Model").modal({show: true,backdrop: true})
 Template.records.helpers({
-
-});
-Template.users.helpers({
-    users: function(){
+    users: function()
+    {
         return Users.find();
+    },
+    booksrent:function()
+    {
+        return Books.find({'renting.value':true});
+    },
+    username: function(id)
+    {
+        var username=Users.findOne({_id:id}).profile.name;
+        return username;
+    },
+    bookspurch:function()
+    {
+        return Books.find({'purching.value':true});
     }
 });
 Template.UserActionBtns.events({

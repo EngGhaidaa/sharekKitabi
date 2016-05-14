@@ -137,52 +137,55 @@ Template.times.events
     },
     "click #a": function ()
     {
+        console.log('sss');
     }
 })
 
 Template.times.helpers
 ({
     bookapp: function () {
-        if(Appointments.find('user.value'))
+        if(Appointments.find('user.id',fields({'user.book':1})))
         return true;
     },
     appointments: function () {
-        if(Appointments.find('user.value')!=null)
-        { return Appointments.find();}
+
+        var c=true;
+        return Appointments.find({can:c});
     },
-    //app:function(){
-    //    if(Appointments.find('user.book').)
-    //    return true;
-    //},
+    app:function(can){
+        if(Appointments.findOne(can))
+        return true;
+    },
     //,'user.book','user.pay')
     getPlaceName: function (place)
     {
-        return Places.findOne(place).title;
+        return Places.findOne({_id:place}).title;
     },
-    bookcounter: function ()
+    bookcounter: function (idapp)
     {
-        var booknum = Appointments.find('user.book').count();
+        var booknum = Appointments.find({_id:idapp},{fields:{book:1}}).count()
         return booknum;
     },
-    bookname: function()
+    bookname: function(id)
     {
-        var bookname=Books.findOne('user.book').title;
+        var bookna=Books.findOne({_id:id});
+        var bookname=Books.findOne(bookna).title;
         return bookname;
     },
-    username: function()
+    userna: function(id)
     {
-        if(Books.findOne('user.value'))
-        {  var username=Users.findOne('user.value').profile.name;
-            return username;}
+         var username=Users.findOne({_id:id}).profile.name;
+            return username;
+
     },
-    paytype: function()
+    paytype: function(pay)
     {
         var type;
-        var paytyp=Appointments.find('user.pay');
-        if (paytyp.substring(0)=="t")
-            type='دفع يدوي';
+        var paytyp=Appointments.find(pay);
+        if (pay=="true")
+        {type='دفع يدوي';}
         else
-            type='تم الدفع';
+        {type='تم الدفع';}
         return type;
     }
 })

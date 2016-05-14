@@ -42,26 +42,32 @@ Meteor.methods({
         //TODO to adjust this algorithm to manipulate if only one rating from on user what will happen
 
     },
-    editappointment:function(app_id,placeid,dat,u,pa,b)
-    {
-        if(Appointments.find({_id:app_id})&&Appointments.find('user.value').fetch().length==0)
+    editappointment:function(app_id,placeid,dat,u,pa,b) {
+        if (
+            //Appointments.find({_id: app_id})&&
+       ! Appointments.findOne({'user.id':u,'user.book':b}))
         {
-            Appointments.upsert({_id: app_id,place:placeid._id,date:dat},
+            Appointments.update({place: placeid._id, date: dat},
                 {
+                    $set:{can: true},
                     $push: {
                         user: {
-                            value: u,
-                            pay: pa,
-                            book: b
+                          book: b,
+                            id: u,
+                            pay: pa
                         }
+                        //    'user.$.book':b,
+                        //    'user.$.value':u,
+                        //    'user.$.pay':pa,
+                        //    can:true
                     }
                 })
         }
         else
         {
-            Appointments.update({_id: app_id}, {$set: {'user.$.book':b,'user.$.value':u,'user.$.pay':pa}});
+            return false;
+        //    Appointments.update({place: placeid._id, date: dat},
+        //        {$set:{can:true,'user.id':u,'user.book':b,'user.pay':pa}})
         }
     }
-
-
 });

@@ -26,7 +26,7 @@ Template.details.events({
         if(!Meteor.userId())
         {$("#Modellogin").modal({show: true,backdrop: true});}
         else
-        {   $("#Modelpay").modal({show: true,backdrop: true});}
+        {$("#Modelrent").modal({show: true,backdrop: true});}
     },
 
     'click #purchbtn':function(event) {
@@ -39,13 +39,28 @@ Template.details.events({
     'click #btnpaymun':function() {
         var z=Router.current().params.id;
         console.log(z);
-        Router.go("appointment",{bookid:z,payb:true});
+        //var pay=true;
+        Router.go("appointment",{bookid:z,payb:true,purchvalue:true,rentvalue:false});
         $('.modal-backdrop').remove();
     },
 
     'click #btnpaypal':function() {
         var z=Router.current().params.id;
-        Router.go("paypal",{bookid:z,payb:false});
+        Router.go("paypal",{bookid:z,payb:false,purchvalue:true,rentvalue:false});
+        $('.modal-backdrop').remove();
+    },
+
+    'click #btnrentmun':function() {
+        var z=Router.current().params.id;
+        console.log(z);
+        Router.go("appointment",{bookid:z,payb:true,rentvalue:true,purchvalue:false});
+        $('.modal-backdrop').remove();
+    },
+
+    'click #btnrentpal':function() {
+        var z=Router.current().params.id;
+        Router.go("paypal",{bookid:z,payb:false,rentvalue:true,purchvalue:false});
         $('.modal-backdrop').remove();
     }
+    //ToDo compliet router par
 });
