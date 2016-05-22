@@ -10,8 +10,9 @@ this.AppointmentController = RouteController.extend({
     },
     waitOn:function(){
        return[ Meteor.subscribe('appointments'),Meteor.subscribe('places'),
-           Meteor.subscribe('bookappoin',this.params.bookid)
-           //Meteor.subscribe('bookpay',this.params.pay)
+           Meteor.subscribe('bookappoin',this.params.bookid),
+           Meteor.subscribe('rentbook',this.params.rentvalue),
+           Meteor.subscribe('purchbook',this.params.purchvalue)
        ];
     }
 })

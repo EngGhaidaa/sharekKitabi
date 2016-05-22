@@ -2,6 +2,7 @@
     <div class="row">
         <div class="space"></div>
         <div class="col-md-8 col-md-offset-2">
+            <!--{{time}}-->
                 <!--{{#if bookapp}}-->
                 <button data-toggle="collapse" data-parent="#accordion_reg" href="#appbook" aria-expanded="true"
                aria-controls="appbook" id="a">
@@ -26,21 +27,20 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                    {{userna this.id}}
-                                                </td>
-
-                                                <td>
-                                                {{bookcounter this._id}}
-                                                </td>
-                                              <td>
-                                               {{bookname this.book}}
-                                               </td>
-                                               <td>
-                                               {{paytype this.pay}}
-                                               </td>
+                                                        {{userna this.id}}
+                                                    </td>
+                                                    <td>
+                                                        {{bookname this.book}}
+                                                    </td>
+                                                    <td>
+                                                        {{paytype this.pay}}
+                                                    </td>
+                                                    <td>
+                                                        {{payvalue this.rent}}
+                                                    </td>
                                                 </tr>
                                             </tbody>
-                                               {{/each}}
+                                            {{/each}}
                                 <!--{{/if}}-->
                 {{/each}}
                 </table>

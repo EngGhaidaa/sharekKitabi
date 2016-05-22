@@ -26,6 +26,15 @@ Meteor.methods({
             }
         }
     },
+
+    time:function(time){
+        var myVar = setInterval(myTimer,1000);
+        var d = new Date();
+       if(time< d.toLocaleTimeString())
+       {var ti=Appointments.findOne({date:time});
+           Appointments.remove(ti)}
+    },
+
     updateRating: function (bookId) {
         var ratings = [0, 0, 0, 0, 0, 0];
         var bookratings = Ratings.findOne({bookId: bookId});
@@ -39,13 +48,12 @@ Meteor.methods({
             }, 0))}
 
         Books.update({_id: bookId}, {$set: {rating: parseInt(rating)}});
-        //TODO to adjust this algorithm to manipulate if only one rating from on user what will happen
 
     },
-    editappointment:function(app_id,placeid,dat,u,pa,b) {
+    editappointment:function(app_id,placeid,dat,u,pa,b,purch,rent) {
         if (
             //Appointments.find({_id: app_id})&&
-       ! Appointments.findOne({'user.id':u,'user.book':b}))
+       !Appointments.findOne({'user.id':u,'user.book':b,_id:app_id}))
         {
             Appointments.update({place: placeid._id, date: dat},
                 {
@@ -54,7 +62,9 @@ Meteor.methods({
                         user: {
                           book: b,
                             id: u,
-                            pay: pa
+                            pay: pa,
+                            rent:rent,
+                            purch:purch
                         }
                         //    'user.$.book':b,
                         //    'user.$.value':u,
@@ -62,6 +72,30 @@ Meteor.methods({
                         //    can:true
                     }
                 })
+            if(rent=='true')
+            {
+                Books.update({_id:b},
+                    {
+                        $push:{
+                            renting:{
+                                value:rent,
+                                user:u
+                            }
+                        }
+                    })
+            }
+            else
+            {
+                Books.update({_id:b},
+                    {
+                        $push:{
+                            purching:{
+                                value:purch,
+                                user:u
+                            }
+                        }
+                    })
+            }
         }
         else
         {

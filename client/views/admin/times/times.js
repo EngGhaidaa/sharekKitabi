@@ -1,3 +1,4 @@
+
 Template.AppointmentActionBtns.events({
     'click #btnUpdateApp': function(){
         Session.set("appointmentID", this._id);
@@ -140,9 +141,32 @@ Template.times.events
         console.log('sss');
     }
 })
-
+function formatDate(date) {
+    if(!date) {
+        return "";
+    }
+    var date;
+    var f =  "dddd MM/DD/YYYY hh:mma";
+    if(_.isString(date)) {
+        if(date.toUpperCase() == "NOW") {
+            date = new Date();
+        }
+        if(date.toUpperCase() == "TODAY") {
+            var d = new Date();
+            date = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
+        }
+    }
+    return moment(date).format(f);
+}
 Template.times.helpers
 ({
+    time:function()
+    {
+    var t=Appointments.find(date);
+    var time= formatDate(t);
+    Meteor.call('time',time);
+    },
+
     bookapp: function () {
         if(Appointments.find('user.id',fields({'user.book':1})))
         return true;
@@ -163,7 +187,7 @@ Template.times.helpers
     },
     bookcounter: function (idapp)
     {
-        var booknum = Appointments.find({_id:idapp},{fields:{book:1}}).count()
+        var booknum = Appointments.find({_id:idapp},{fields:{book:1}}).count();
         return booknum;
     },
     bookname: function(id)
@@ -187,6 +211,14 @@ Template.times.helpers
         else
         {type='تم الدفع';}
         return type;
+    },
+    payvalue: function(rent)
+    {
+        var value;
+        if(rent=='true')
+        {value='استعارة';}
+        else
+        {value='بيع';}
+        return value;
     }
 })
-//TODO edit delete app& hide modal add

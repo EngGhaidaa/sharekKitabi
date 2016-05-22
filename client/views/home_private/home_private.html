@@ -1,36 +1,57 @@
 <template name="HomePrivate">
 	<div class="page-container container" id="content">
 		<div class="row" id="title_row">
-			<div class="col-md-12">
 				<h2 id="page_title" class="pull-left">
 					Welcome {{userFullName}}!
 				</h2>
-{{#unless isAdmin}}
-				<br><br><br><br><br><br>
-  <div class="panel">
-    <div class="panel-heading text-center">
-     <div class="panel-body">
-        <div class="row">
-            <div class="col-xs-6 col-md-6">
-               <a href="#" class="btn btn-default btn-md" role="button">
-                  <span class="glyphicon glyphicon-list"></span> <br/>الكتب المستعارة
-               </a>
+                {{#unless isAdmin}}
+                 <br><br><br><br><br><br>
+                <div class="row">
+                    <div class="space"></div>
+                    <div class='col-md-8 col-md-offset-2'>
+                        <p>اختر ماتريد أن تراه!!</p>
+                        <div class="panel-group" id="accordion_reg" role="tablist" aria-multiselectable="false">
+                            <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="bookrecords">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion_reg" href="#rentbook" aria-expanded="true" aria-controls="rentbook">
+                الكتب المستعارة
+            </a>
+        </h4>
+    </div>
+<div id="rentbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rentbook">
+<div class="panel-body">
+        {{#each rentbook}}
+            <div class="col-md-7">
+            {{title}}
             </div>
-            <div class="col-xs-6 col-md-6">
-               <a href="#" class="btn btn-default btn-md" role="button">
-                  <span class="glyphicon glyphicon-list"></span> <br/>الكتب المشتراة
-               </a>
-            </div>
-        </div>
-            <a href="#" class="btn btn-default btn-md btn-block" role="button">
-         <span class="glyphicon glyphicon-tag"></span> الكتاب المستعار حالياً
-                </a>
-     </div>
+        {{/each}}
     </div>
   </div>
-{{/unless}}
+    </div>
+                            <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="bookrecords">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion_reg" href="#purchbook" aria-expanded="true" aria-controls="purchbook">
+                    الكتب المشتراة
+                </a>
+            </h4>
+        </div>
+        <div id="purchbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="purchbook">
+            <div class="panel-body">
+                {{#each purchbook}}
+                    <div class="col-md-7">
+                    {{title}}
+                    </div>
+                {{/each}}
             </div>
         </div>
+    </div>
+                        </div>
+                    </div>
+                </div>
+                {{/unless}}
+            </div>
 	</div>
 </template>
 

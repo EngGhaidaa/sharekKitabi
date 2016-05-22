@@ -1,3 +1,4 @@
+var s="true";
 Template.records.helpers({
     users: function()
     {
@@ -5,7 +6,7 @@ Template.records.helpers({
     },
     booksrent:function()
     {
-        return Books.find({'renting.value':true});
+        return Books.find({'renting.value':s});
     },
     username: function(id)
     {
@@ -14,7 +15,7 @@ Template.records.helpers({
     },
     bookspurch:function()
     {
-        return Books.find({'purching.value':true});
+        return Books.find({'purching.value':s});
     }
 });
 Template.UserActionBtns.events({
@@ -22,23 +23,30 @@ Template.UserActionBtns.events({
         Session.set("userID", this._id);
     }
 });
-Template.TmpModalRemove.helpers({
+Template.TmpModalRemoveuser.helpers({
     data: function(){
         return Users.findOne({_id: Session.get('userID')});
     }
 });
 
-Template.TmpModalRemove.events({
+Template.TmpModalRemoveuser.events({
     "click  #confirmTrue": function(){
         if (Meteor.userId()) {
+            Users.remove({_id: Session.get('userID')}, function (err,result) {
+                if(err)
+                {
+                    Meteor.call('deleteUsers',Session.get('userID'));
+                }
+            });
             var data = Users.findOne({_id: Session.get('userID')});
             var t = "تم حذف المستخدم";
-            var msg = data.title;
-            toastr.success(msg, t,{
+            toastr.success(data, t, {
                 positionClass: "toast-top-center",
                 timeOut: "500"
             });
-            Users.remove({_id: Session.get('userID')});
+            //location.reload();
+
+
         }
     }
 });

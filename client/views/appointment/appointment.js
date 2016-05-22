@@ -24,7 +24,8 @@ var u;
 var pa;
 var b;
 var dat;
-
+var purchvalue;
+var rentvalue;
 
 Template.appointment.helpers
 ({
@@ -79,6 +80,8 @@ Template.appointment.events({
         u=Meteor.userId();
         b=Router.current().params.bookid;
        pa=Router.current().params.payb;
+       purchvalue=Router.current().params.purchvalue;
+       rentvalue=Router.current().params.rentvalue;
        //console.log(a+"&&"+u+"&&"+b+"&&"+pa );
        {$("#Modelaccept").modal({show: true,backdrop: "static"});}
 
@@ -89,6 +92,6 @@ Template.appointment.events({
     },
    'click #btnsub':function()
    {
-       Meteor.call('editappointment',app_id,placeid,dat,u,pa,b)
+       Meteor.call('editappointment',app_id,placeid,dat,u,pa,b,purchvalue,rentvalue)
    }
 });

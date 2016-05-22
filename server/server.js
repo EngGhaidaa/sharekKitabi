@@ -146,6 +146,10 @@ Meteor.startup(function () {
 
 Meteor.methods({
 
+    'deleteUsers': function (userid) {
+        Users.remove({_id: userid});
+    },
+
     'deleteAppointmentForPlace': function (place) {
         Appointments.remove({place: place});
     },

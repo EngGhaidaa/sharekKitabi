@@ -127,16 +127,16 @@ BookSchema = new SimpleSchema({
     },
     'renting.$.value':
     {
-        type:Boolean,
-        defaultValue:false
+        type:String
     },
-    'renting.user':
+    'renting.$.user':
     {
         type:String
     },
-    'renting.now':
+    'renting.$.now':
     {
-        type:String
+        type:String,
+        optional: true
     },
     purching:
     {
@@ -150,16 +150,16 @@ BookSchema = new SimpleSchema({
     },
     'purching.$.value':
     {
-        type:Boolean,
-        defaultValue:false
+        type:String
     },
-    'purching.user':
+    'purching.$.user':
     {
         type:String
     },
-    'purching.now':
+    'purching.$.now':
     {
-        type:String
+        type:String,
+        optional: true
     }
 });
 Books.attachSchema(BookSchema);

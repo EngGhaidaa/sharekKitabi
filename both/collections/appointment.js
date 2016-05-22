@@ -1,8 +1,8 @@
 Appointments=new Mongo.Collection('appointments');
 AppointmentSchema = new SimpleSchema({
-    can:{
-        type:Boolean,
-        defaultValue:false
+    can: {
+        type: Boolean,
+        defaultValue: false
     },
     place: {
         type: String,
@@ -17,41 +17,45 @@ AppointmentSchema = new SimpleSchema({
             firstOption: 'اختر المكان المناسب'
         }
     },
-    date:
-    {
-        type:Date,
-        label:"وقت وتاريخ التسليم",
-            autoform: {
-                afFieldInput: {
-                    type: "datetime-local"
-                }
+    date: {
+        type: Date,
+        label: "وقت وتاريخ التسليم",
+        min: new Date(Date.now()),
+        autoform: {
+            afFieldInput: {
+
+                type: "datetime-local"
             }
+        }
     },
-    user:
-    {
+    user: {
         type: [Object],
         optional: true
     },
-    'user.$':
-    {
-      type:Object,
-      optional: true
+    'user.$': {
+        type: Object,
+        optional: true
     },
-    'user.$.id':
-    {
-        type:String,
+    'user.$.id': {
+        type: String,
         custom: function () {
             if (Appointments.findOne(this.value)) {
                 return 'Existed';
             }
         }
     },
-    'user.$.book':
-    {
+    'user.$.book': {
         type: String
         //label: "اسم الكتب"
     },
-    'user.$.pay':
+    'user.$.pay': {
+        type: String
+    },
+    'user.$.rent':
+    {
+        type:String
+    },
+    'user.$.purch':
     {
         type:String
     }
@@ -78,6 +82,9 @@ TabularTables.Appointments = new Tabular.Table({
         {data: "date", title: "وقت وتاريخ التسليم", type:'datetime',
             render: function (val) {
                 return moment(val).format( " dd D/MM/YYYY hh:mm A ");
+                //var t=Appointments.find(date);
+                //var time= formatDate(t);
+                //Meteor.call('time',time);
             }
         },
         {

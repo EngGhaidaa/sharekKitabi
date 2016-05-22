@@ -39,5 +39,8 @@ this.HomePrivateController = RouteController.extend({
 
 	onAfterAction: function() {
 		
+	},
+	waitOn: function () {
+		return[Meteor.subscribe('books'),Meteor.subscribe('rentbook'),Meteor.subscribe('purchbook')]
 	}
 });
