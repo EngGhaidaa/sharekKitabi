@@ -2,147 +2,147 @@ var verifyEmail = false;
 
 Accounts.config({sendVerificationEmail: verifyEmail});
 
-Meteor.startup(function () {
-
-
-    console.log("I'm here!");
-
-
-    if (Categories.find().count() == 0) {
-        var i = 0
-        while (i < 10) {
-            Categories.insert({title: ('قسم' + i)})
-            i++;
-        }
-    }
-    if (Books.find().count() == 0) {
-        var i = 0
-        var categoriesArray = Categories.find({}, {_id: 1}).fetch();
-        while (i < 10) {
-            var bookid = Books.insert({
-                title: ('كتاب' + i), author: ('مؤلف ' + i), publisher: ('ناشر' + i),
-                numberOfPages: (i), summary: 'dadada', categorie: categoriesArray[i]._id,
-                insurance: '2', purchasing: '1', rent: '21', rentTime: '12', purch: true,
-                copiesPurchas: '1', copiesRent: '12', rack: (i), source: ('شارك كتابي'), rating: "1",img:"i"
-            }, function (err, result) {
-                if (!err) {
-                    Ratings.insert({bookId: result});
-                }
-            });
-            i++;
-
-        }
-    }
-
-
-    // read environment variables from Meteor.settings
-    if (Meteor.settings && Meteor.settings.env && _.isObject(Meteor.settings.env)) {
-        for (var variableName in Meteor.settings.env) {
-            process.env[variableName] = Meteor.settings.env[variableName];
-        }
-    }
-
-    //
-    // Setup OAuth login service configuration (read from Meteor.settings)
-    //
-    // Your settings file should look like this:
-    //
-    // {
-    //     "oauth": {
-    //         "google": {
-    //             "clientId": "yourClientId",
-    //             "secret": "yourSecret"
-    //         },
-    //         "github": {
-    //             "clientId": "yourClientId",
-    //             "secret": "yourSecret"
-    //         }
-    //     }
-    // }
-    //
-    if (Accounts && Accounts.loginServiceConfiguration && Meteor.settings && Meteor.settings.oauth && _.isObject(Meteor.settings.oauth)) {
-        // google
-        if (Meteor.settings.oauth.google && _.isObject(Meteor.settings.oauth.google)) {
-            // remove old configuration
-            Accounts.loginServiceConfiguration.remove({
-                service: "google"
-            });
-
-            var settingsObject = Meteor.settings.oauth.google;
-            settingsObject.service = "google";
-
-            // add new configuration
-            Accounts.loginServiceConfiguration.insert(settingsObject);
-        }
-        // github
-        if (Meteor.settings.oauth.github && _.isObject(Meteor.settings.oauth.github)) {
-            // remove old configuration
-            Accounts.loginServiceConfiguration.remove({
-                service: "github"
-            });
-
-            var settingsObject = Meteor.settings.oauth.github;
-            settingsObject.service = "github";
-
-            // add new configuration
-            Accounts.loginServiceConfiguration.insert(settingsObject);
-        }
-        // linkedin
-        if (Meteor.settings.oauth.linkedin && _.isObject(Meteor.settings.oauth.linkedin)) {
-            // remove old configuration
-            Accounts.loginServiceConfiguration.remove({
-                service: "linkedin"
-            });
-
-            var settingsObject = Meteor.settings.oauth.linkedin;
-            settingsObject.service = "linkedin";
-
-            // add new configuration
-            Accounts.loginServiceConfiguration.insert(settingsObject);
-        }
-        // facebook
-        if (Meteor.settings.oauth.facebook && _.isObject(Meteor.settings.oauth.facebook)) {
-            // remove old configuration
-            Accounts.loginServiceConfiguration.remove({
-                service: "facebook"
-            });
-
-            var settingsObject = Meteor.settings.oauth.facebook;
-            settingsObject.service = "facebook";
-
-            // add new configuration
-            Accounts.loginServiceConfiguration.insert(settingsObject);
-        }
-        // twitter
-        if (Meteor.settings.oauth.twitter && _.isObject(Meteor.settings.oauth.twitter)) {
-            // remove old configuration
-            Accounts.loginServiceConfiguration.remove({
-                service: "twitter"
-            });
-
-            var settingsObject = Meteor.settings.oauth.twitter;
-            settingsObject.service = "twitter";
-
-            // add new configuration
-            Accounts.loginServiceConfiguration.insert(settingsObject);
-        }
-        // meteor
-        if (Meteor.settings.oauth.meteor && _.isObject(Meteor.settings.oauth.meteor)) {
-            // remove old configuration
-            Accounts.loginServiceConfiguration.remove({
-                service: "meteor-developer"
-            });
-
-            var settingsObject = Meteor.settings.oauth.meteor;
-            settingsObject.service = "meteor-developer";
-
-            // add new configuration
-            Accounts.loginServiceConfiguration.insert(settingsObject);
-        }
-    }
-
-
-});
+//Meteor.startup(function () {
+//
+//
+//    console.log("I'm here!");
+//
+//
+//    if (Categories.find().count() == 0) {
+//        var i = 0
+//        while (i < 10) {
+//            Categories.insert({title: ('قسم' + i)})
+//            i++;
+//        }
+//    }
+//    if (Books.find().count() == 0) {
+//        var i = 0
+//        var categoriesArray = Categories.find({}, {_id: 1}).fetch();
+//        while (i < 10) {
+//            var bookid = Books.insert({
+//                title: ('كتاب' + i), author: ('مؤلف ' + i), publisher: ('ناشر' + i),
+//                numberOfPages: (i), summary: 'dadada', categorie: categoriesArray[i]._id,
+//                insurance: '2', purchasing: '1', rent: '21', rentTime: '12', purch: true,
+//                copiesPurchas: '1', copiesRent: '12', rack: (i), source: ('شارك كتابي'), rating: "1",img:"i"
+//            }, function (err, result) {
+//                if (!err) {
+//                    Ratings.insert({bookId: result});
+//                }
+//            });
+//            i++;
+//
+//        }
+//    }
+//
+//
+//    // read environment variables from Meteor.settings
+//    if (Meteor.settings && Meteor.settings.env && _.isObject(Meteor.settings.env)) {
+//        for (var variableName in Meteor.settings.env) {
+//            process.env[variableName] = Meteor.settings.env[variableName];
+//        }
+//    }
+//
+//    //
+//    // Setup OAuth login service configuration (read from Meteor.settings)
+//    //
+//    // Your settings file should look like this:
+//    //
+//    // {
+//    //     "oauth": {
+//    //         "google": {
+//    //             "clientId": "yourClientId",
+//    //             "secret": "yourSecret"
+//    //         },
+//    //         "github": {
+//    //             "clientId": "yourClientId",
+//    //             "secret": "yourSecret"
+//    //         }
+//    //     }
+//    // }
+//    //
+//    if (Accounts && Accounts.loginServiceConfiguration && Meteor.settings && Meteor.settings.oauth && _.isObject(Meteor.settings.oauth)) {
+//        // google
+//        if (Meteor.settings.oauth.google && _.isObject(Meteor.settings.oauth.google)) {
+//            // remove old configuration
+//            Accounts.loginServiceConfiguration.remove({
+//                service: "google"
+//            });
+//
+//            var settingsObject = Meteor.settings.oauth.google;
+//            settingsObject.service = "google";
+//
+//            // add new configuration
+//            Accounts.loginServiceConfiguration.insert(settingsObject);
+//        }
+//        // github
+//        if (Meteor.settings.oauth.github && _.isObject(Meteor.settings.oauth.github)) {
+//            // remove old configuration
+//            Accounts.loginServiceConfiguration.remove({
+//                service: "github"
+//            });
+//
+//            var settingsObject = Meteor.settings.oauth.github;
+//            settingsObject.service = "github";
+//
+//            // add new configuration
+//            Accounts.loginServiceConfiguration.insert(settingsObject);
+//        }
+//        // linkedin
+//        if (Meteor.settings.oauth.linkedin && _.isObject(Meteor.settings.oauth.linkedin)) {
+//            // remove old configuration
+//            Accounts.loginServiceConfiguration.remove({
+//                service: "linkedin"
+//            });
+//
+//            var settingsObject = Meteor.settings.oauth.linkedin;
+//            settingsObject.service = "linkedin";
+//
+//            // add new configuration
+//            Accounts.loginServiceConfiguration.insert(settingsObject);
+//        }
+//        // facebook
+//        if (Meteor.settings.oauth.facebook && _.isObject(Meteor.settings.oauth.facebook)) {
+//            // remove old configuration
+//            Accounts.loginServiceConfiguration.remove({
+//                service: "facebook"
+//            });
+//
+//            var settingsObject = Meteor.settings.oauth.facebook;
+//            settingsObject.service = "facebook";
+//
+//            // add new configuration
+//            Accounts.loginServiceConfiguration.insert(settingsObject);
+//        }
+//        // twitter
+//        if (Meteor.settings.oauth.twitter && _.isObject(Meteor.settings.oauth.twitter)) {
+//            // remove old configuration
+//            Accounts.loginServiceConfiguration.remove({
+//                service: "twitter"
+//            });
+//
+//            var settingsObject = Meteor.settings.oauth.twitter;
+//            settingsObject.service = "twitter";
+//
+//            // add new configuration
+//            Accounts.loginServiceConfiguration.insert(settingsObject);
+//        }
+//        // meteor
+//        if (Meteor.settings.oauth.meteor && _.isObject(Meteor.settings.oauth.meteor)) {
+//            // remove old configuration
+//            Accounts.loginServiceConfiguration.remove({
+//                service: "meteor-developer"
+//            });
+//
+//            var settingsObject = Meteor.settings.oauth.meteor;
+//            settingsObject.service = "meteor-developer";
+//
+//            // add new configuration
+//            Accounts.loginServiceConfiguration.insert(settingsObject);
+//        }
+//    }
+//
+//
+//});
 
 Meteor.methods({
 
@@ -219,14 +219,15 @@ Meteor.methods({
 });
 
 Accounts.onCreateUser(function (options, user) {
-    user.roles = [];
 
+    user.roles = [];
+    user.registeredAt = new Date();
     if (options.profile) {
         user.profile = options.profile;
     }
 
 
-    return user;
+        return user;
 });
 
 Accounts.validateLoginAttempt(function (info) {

@@ -107,7 +107,16 @@
         </div>
         <div class="navbar-spacer">
         </div>
-        {{> yield}}
+        <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                {{> yield region='rightSide'}}
+            </div>
+            <div class="col-md-8">
+                 {{> yield region='main'}}
+            </div>
+        </div>
+        </div>
     </div>
     <div id="footer" class="sticky-footer">
         <div class="footer-container container">

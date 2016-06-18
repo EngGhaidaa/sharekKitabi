@@ -1,4 +1,5 @@
-panel-body.panel-body .btn:not(.btn-block) {
+.panel-body.panel-body .btn:not(.btn-block) {
+
     width: 120px;
     margin-bottom: 10px;
 }
@@ -112,4 +113,10 @@ tbody tr.selected td {
 .btn .active
 {
     color:#8a6d3b;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }

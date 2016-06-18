@@ -7,6 +7,16 @@ TabularTables.Users = new Tabular.Table({
     collection: Users,
     columns: [
         {data: "profile.name", title: "اسم المستخدم", class: "col-md-3"},
+        {data: "profile.phone", title: "رقم الهاتف", class: "col-md-3"},
+        {data: "profile.email", title: "البريد الالكتروني", class: "col-md-3"},
+        {data: "registeredAt", title: "سجل بتاريخ", type:'datetime',
+            render: function (val) {
+               if(val) {
+                   return moment(val).format(" dd D/MM/YYYY hh:mm A ");
+               }
+
+            }
+        },
         {
             tmpl: Meteor.isClient && Template.UserActionBtns, class: "col-md-1"
         }
@@ -16,16 +26,7 @@ TabularTables.Users = new Tabular.Table({
     }
 
 });
-//Users.helpers({
-//    getUserName: function () {
-//        if (Meteor.userId() != this._id) {
-//            var user = Users.findOne(this._id);
-//            if(user){
-//                return user.profile.name;
-//            }
-//        }
-//    }
-//});
+
 //Helpers.userFullName
 
 

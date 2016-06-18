@@ -15,7 +15,7 @@
 		{{else}}
 		<form id="register_form" class="account-form" role="form">
 			<h2>
-				Please sign up
+                إنشاء حساب جديد
 			</h2>
 			{{#if errorMessage}}
 			<div class="alert alert-warning">
@@ -25,6 +25,11 @@
 			<input id="register_name" type="text" class="form-control" placeholder="Your full name" required autofocus>
 			<input id="register_email" type="text" class="form-control" placeholder="Email address" required>
 			<input id="register_password" type="password" class="form-control" placeholder="Password" required>
+			<input id="register_password_again" type="password" class="form-control" placeholder="كلمة السر مرة أخرى" required>
+			<input id="register_phone" type="number" class="form-control" placeholder="رقم الهاتف" required>
+
+
+
 			<button class="btn btn-lg btn-primary btn-block" type="submit" data-loading-text="Please wait...">
 				Sign up
 			</button>
