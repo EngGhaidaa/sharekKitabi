@@ -3,8 +3,8 @@ this.CategoriesController = RouteController.extend({
 
     yieldTemplates: {
         /*YIELD_TEMPLATES*/
-        'categories': {to: 'main'},
-        'HomePrivate': {to: 'rightSide'},
+        //'categories': {to: 'main'},
+        //'HomePrivate': {to: 'rightSide'},
 
 
     },
