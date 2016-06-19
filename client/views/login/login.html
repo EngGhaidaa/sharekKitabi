@@ -10,21 +10,21 @@
 			</div>
 			{{/if}}
 			<div id="login-with-password" style="padding-top: 10px;">
-				<input id="login_email" type="text" class="form-control" placeholder="Email address" required autofocus>
-				<input id="login_password" type="password" class="form-control" placeholder="Password" required>
-				<button class="btn btn-lg btn-primary btn-block" type="submit" data-loading-text="Please wait...">
-					Sign in
+				<input id="login_email" type="text" class="form-control" placeholder="البريد الالكتروني" required autofocus>
+				<input id="login_password" type="password" class="form-control" placeholder="كلمة السر" required>
+				<button class="btn btn-lg btn-primary btn-block" type="submit" data-loading-text="يرجى الانتظار قليلاً..">
+                    تسجيل الدخول
 				</button>
 				<p class="account-form-text-after" id="register-link">
-					Not a member?
+					ليس لدي حساب !!
 					<a href="{{pathFor 'register'}}">
-						Sign up here
+إنشاء حساب جديد
 					</a>
 				</p>
 				<p class="account-form-text-after" id="forgot-password-link">
-					Forgot password?
+					نسيت كلة السر!!
 					<a href="{{pathFor 'forgot_password'}}">
-						Click here
+اضغط هنا
 					</a>
 				</p>
 			</div>

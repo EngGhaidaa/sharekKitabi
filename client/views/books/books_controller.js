@@ -11,6 +11,8 @@ this.BooksController = RouteController.extend({
     },
 
     waitOn: function () {
-        return[ Meteor.subscribe('books'),Meteor.subscribe('categories')]
+        return[ Meteor.subscribe('books'),Meteor.subscribe('categories'),
+            Meteor.subscribe('books'), Meteor.subscribe('rentbook'), Meteor.subscribe('purchbook')
+        ]
 }
 });

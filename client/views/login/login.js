@@ -49,77 +49,77 @@ Template.Login.events({
 		return false; 
 	},
 
-	"click #login-with-google": function(e, t) {
-		e.preventDefault();
-		pageSession.set("errorMessage", "");
-
-		var button = $(e.currentTarget);
-		button.button("loading");
-
-		Meteor.loginWithGoogle(
-			{
-				requestPermissions: ["email"]
-			},
-			function(err) {
-				button.button("reset");
-				if (err)
-				{
-					pageSession.set("errorMessage", err.message);
-					return false;
-				}
-			}
-		);
-
-		return false;
-	},
-
-	"click #login-with-github": function(e, t) {
-		e.preventDefault();
-		pageSession.set("errorMessage", "");
-
-		var button = $(e.currentTarget);
-		button.button("loading");
-
-		Meteor.loginWithGithub(
-			{
-				requestPermissions: ["public_repo", "user:email"]
-			},
-			function(err) {
-				button.button("reset");
-				if (err)
-				{
-					pageSession.set("errorMessage", err.message);
-					return false;
-				}
-			}
-		);
-
-		return false;
-	},
-
-	"click #login-with-linkedin": function(e, t) {
-		e.preventDefault();
-		pageSession.set("errorMessage", "");
-
-		var button = $(e.currentTarget);
-		button.button("loading");
-
-		Meteor.loginWithLinkedin(
-			{
-				requestPermissions: ["r_emailaddress"]
-			},
-			function(err) {
-				button.button("reset");
-				if (err)
-				{
-					pageSession.set("errorMessage", err.message);
-					return false;
-				}
-			}
-		);
-
-		return false;
-	},
+	//"click #login-with-google": function(e, t) {
+	//	e.preventDefault();
+	//	pageSession.set("errorMessage", "");
+    //
+	//	var button = $(e.currentTarget);
+	//	button.button("loading");
+    //
+	//	Meteor.loginWithGoogle(
+	//		{
+	//			requestPermissions: ["email"]
+	//		},
+	//		function(err) {
+	//			button.button("reset");
+	//			if (err)
+	//			{
+	//				pageSession.set("errorMessage", err.message);
+	//				return false;
+	//			}
+	//		}
+	//	);
+    //
+	//	return false;
+	//},
+    //
+	//"click #login-with-github": function(e, t) {
+	//	e.preventDefault();
+	//	pageSession.set("errorMessage", "");
+    //
+	//	var button = $(e.currentTarget);
+	//	button.button("loading");
+    //
+	//	Meteor.loginWithGithub(
+	//		{
+	//			requestPermissions: ["public_repo", "user:email"]
+	//		},
+	//		function(err) {
+	//			button.button("reset");
+	//			if (err)
+	//			{
+	//				pageSession.set("errorMessage", err.message);
+	//				return false;
+	//			}
+	//		}
+	//	);
+    //
+	//	return false;
+	//},
+    //
+	//"click #login-with-linkedin": function(e, t) {
+	//	e.preventDefault();
+	//	pageSession.set("errorMessage", "");
+    //
+	//	var button = $(e.currentTarget);
+	//	button.button("loading");
+    //
+	//	Meteor.loginWithLinkedin(
+	//		{
+	//			requestPermissions: ["r_emailaddress"]
+	//		},
+	//		function(err) {
+	//			button.button("reset");
+	//			if (err)
+	//			{
+	//				pageSession.set("errorMessage", err.message);
+	//				return false;
+	//			}
+	//		}
+	//	);
+    //
+	//	return false;
+	//},
 
 	"click #login-with-facebook": function(e, t) {
 		e.preventDefault();
@@ -167,32 +167,32 @@ Template.Login.events({
 		);
 
 		return false;
-	},
-
-	"click #login-with-meteor": function(e, t) {
-		e.preventDefault();
-		pageSession.set("errorMessage", "");
-
-		var button = $(e.currentTarget);
-		button.button("loading");
-
-		Meteor.loginWithMeteorDeveloperAccount(
-			{
-				requestPermissions: ["email"]
-			},
-			function(err) {
-				button.button("reset");
-				if (err)
-				{
-					pageSession.set("errorMessage", err.message);
-					return false;
-				}
-			}
-		);
-
-		return false;
 	}
-	
+
+	//"click #login-with-meteor": function(e, t) {
+	//	e.preventDefault();
+	//	pageSession.set("errorMessage", "");
+    //
+	//	var button = $(e.currentTarget);
+	//	button.button("loading");
+    //
+	//	Meteor.loginWithMeteorDeveloperAccount(
+	//		{
+	//			requestPermissions: ["email"]
+	//		},
+	//		function(err) {
+	//			button.button("reset");
+	//			if (err)
+	//			{
+	//				pageSession.set("errorMessage", err.message);
+	//				return false;
+	//			}
+	//		}
+	//	);
+    //
+	//	return false;
+	//}
+	//
 });
 
 Template.Login.helpers({

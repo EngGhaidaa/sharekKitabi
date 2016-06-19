@@ -16,7 +16,7 @@ var publicRoutes = [
 ];
 
 var privateRoutes = [
-	"home_private",
+	//"home_private",
 	"user_settings",
 	"user_settings.profile",
 	"user_settings.change_pass",
@@ -129,7 +129,7 @@ Router.ensureLogged = function() {
 		// user is logged in - check role
 		if(!routeGranted(this.route.getName())) {
 			// user is not in allowedRoles - redirect to first granted route
-			var redirectRoute = firstGrantedRoute("home_private");
+			var redirectRoute = firstGrantedRoute("categories");
 			this.redirect(redirectRoute);
 		} else {
 			this.next();
@@ -144,7 +144,7 @@ Router.ensureNotLogged = function() {
 	}
 
 	if(Meteor.userId()) {
-		var redirectRoute = firstGrantedRoute("home_private");
+		var redirectRoute = firstGrantedRoute("categories");
 		this.redirect(redirectRoute);
 	}
 	else {

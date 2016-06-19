@@ -3,12 +3,13 @@
 		{{#if verificationEmailSent}}
 		<div class="account-form">
 			<h2>
-				Thanks for signing up!
+				نشكرك على إنشاء حساب لك في موقعنا !!
 			</h2>
 			<p>
-				We've sent verification link to your e-mail address.
+				تم إرسال رسالة إلى بريدك الالكتروني
 			</p>
-			<br />			<button class="btn btn-lg btn-primary btn-block go-home" type="button" data-loading-text="Please wait...">
+			<br />
+            <button class="btn btn-lg btn-primary btn-block go-home" type="button" data-loading-text="Please wait...">
 				OK
 			</button>
 		</div>
@@ -22,21 +23,21 @@
 				{{errorMessage}}
 			</div>
 			{{/if}}
-			<input id="register_name" type="text" class="form-control" placeholder="Your full name" required autofocus>
-			<input id="register_email" type="text" class="form-control" placeholder="Email address" required>
-			<input id="register_password" type="password" class="form-control" placeholder="Password" required>
+			<input id="register_name" type="text" class="form-control" placeholder="الاسم الكامل" required autofocus>
+			<input id="register_email" type="text" class="form-control" placeholder="البريد الالكتروني" required>
+			<input id="register_password" type="password" class="form-control" placeholder="كلمة السر" required>
 			<input id="register_password_again" type="password" class="form-control" placeholder="كلمة السر مرة أخرى" required>
 			<input id="register_phone" type="number" class="form-control" placeholder="رقم الهاتف" required>
 
 
 
-			<button class="btn btn-lg btn-primary btn-block" type="submit" data-loading-text="Please wait...">
-				Sign up
+			<button class="btn btn-lg btn-primary btn-block" type="submit" data-loading-text="الرجاء الانتظار قليلاً..">
+                إنشاء حساب
 			</button>
 			<p class="account-form-text-after">
-				Already a member?
+لدي حساب !!
 				<a href="{{pathFor 'login'}}">
-					Sign in here
+تسجيل دخول
 				</a>
 			</p>
 		</form>
