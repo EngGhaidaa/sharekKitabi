@@ -347,6 +347,26 @@ Images.allow({
 //    }
 //});
 //SyncedCron.start();
-Meteor.setInterval(function(){
-    console.log("changed");
-},1000*60*60*24)
+
+Meteor.setInterval(function () {
+
+    Appointments.find({}).forEach(function (doc) {
+        if (doc.date < new Date()) {
+
+            var date = new Date(doc.date);
+
+            date.setDate(date.getDate() + 7);
+            doc.date = date;
+
+            Appointments.update(doc._id, {$set: doc}, {validate: false});
+
+        }
+        Email.send({
+            //TODO configure email 'to' and 'from' and the time of sending email
+            to: "omar.ite@gmail.com",
+            from: "info@sharekkitabi",
+            subject: "تذكير بخصوص موعد لتسليم كتب ",
+            text: "لديك موعد في يوم كذا يرجوا الذهاب اليه "
+        });
+    })
+}, 1000*60*60*24);

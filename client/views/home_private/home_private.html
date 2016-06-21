@@ -28,7 +28,7 @@
     {{#unless isAdmin}}
 <div id="wrapper">
     <div class="overlay"></div>
-<div class="navbar navbar-inverse navbar-fixed-top" id="sidebar-nav" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
     <ul class="nav sidebar-nav">
         <li class="sidebar-brand">
             <a href="#">
@@ -36,31 +36,35 @@
             </a>
         </li>
         <li>
-<a href="#rentbook">
-    الكتب المستعارة
-        </a>
+            <a data-toggle="collapse" data-parent="#accordion_reg" href="#rentbook" aria-expanded="true" aria-controls="rentbook">m,
+                الكتب المستعارة
+            </a>
         </li>
         <li>
-            <a href="#purchbook">
-                الكتب المشتراة
-                </a>
+            <a data-toggle="collapse" data-parent="#accordion_reg" href="#purchbook" aria-expanded="true" aria-controls="purchbook">
+            الكتب المشتراة
+            </a>
         </li>
         </ul>
+    </nav>
     </div>
-    </div>
-        <div id="rentbook" class="panel-collapse collapse">
+    <div id="rentbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rentbook">
+        <div class="panel-body">
             {{#each rentbook}}
                 <div class="col-md-7">
                     {{title}}
                 </div>
             {{/each}}
         </div>
-        <div id="purchbook">
+    </div>
+    <div id="purchbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="purchbook">
+        <div class="panel-body">
             {{#each purchbook}}
                 <div class="col-md-7">
                     {{title}}
                 </div>
             {{/each}}
+        </div>
         </div>
                         {{/unless}}
 
