@@ -10,6 +10,13 @@
                 </button>
                 <div id="appbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="appbook">
                         <div class="lib-row lib-desc">
+                            <a data-toggle="collapse" data-parent="#accordion_reg" href="#purchbook" aria-expanded="true" aria-controls="purchbook">
+                                بيع
+                            </a>
+                            <a data-toggle="collapse" data-parent="#accordion_reg" href="#rentbook" aria-expanded="true" aria-controls="rentbook">
+                                استعارة
+                            </a>
+                            <div id="purchbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="purchbook">
                         <table  class="table table-striped">
                             {{#each appointments}}
                                 <!--{{#if can}}-->
@@ -42,9 +49,10 @@
                                             </tbody>
                                             {{/each}}
                                 <!--{{/if}}-->
-                {{/each}}
-                </table>
-                </div>
+                            {{/each}}
+                        </table>
+                                </div>
+                        </div>
                 </div>
                     <!--{{/if}}-->
           <br><br>

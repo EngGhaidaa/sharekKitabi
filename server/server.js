@@ -363,10 +363,10 @@ Meteor.setInterval(function () {
         }
         Email.send({
             //TODO configure email 'to' and 'from' and the time of sending email
-            to: "omar.ite@gmail.com",
+            to: "sharekkitabi@gmail.com",
             from: "info@sharekkitabi",
             subject: "تذكير بخصوص موعد لتسليم كتب ",
-            text: "لديك موعد في يوم كذا يرجوا الذهاب اليه "
+            text: "لديك تسليم كتب بعد يومين"
         });
     })
 }, 1000*60*60*24);
