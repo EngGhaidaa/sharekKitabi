@@ -212,5 +212,6 @@ Router.map(function () {
 	this.route("edit_book",{path:"/admin/edit_book",controller:"EditBookController"});
 	this.route("records",{path:"/admin/records",controller:"RecordsController"});
 	this.route("times",{path:"/admin/times",controller:"TimesController"});
+	this.route("importBooks",{path:"/admin/importBooks",controller:"importBooksController"});
 
 });

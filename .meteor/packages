@@ -52,3 +52,5 @@ dburles:collection-helpers
 easy:search
 mrt:paypal
 percolate:synced-cron@=1.3.0
+harrison:papa-parse
+reactive-var
