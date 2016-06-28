@@ -35,6 +35,14 @@ BookSchema = new SimpleSchema({
         label: "لمحة عن الكتاب",
         optional: true
     },
+    purchasing: {
+        type: Number,
+        label: "سعر الشراء",
+        optional: true,
+        min: 0
+        //  regEx:^\d+(,\d{1,2})?$
+
+    },
     insurance: {
         type: Number,
         min: 0,
@@ -57,14 +65,7 @@ BookSchema = new SimpleSchema({
     purch: {
         type: Boolean
     },
-    purchasing: {
-        type: Number,
-        label: "سعر الشراء",
-        optional: true,
-        min: 0
-        //  regEx:^\d+(,\d{1,2})?$
 
-    },
     copiesPurchas: {
         type: Number,
         label: "عدد النسخ للشراء",
@@ -115,50 +116,40 @@ BookSchema = new SimpleSchema({
             }
         }
     },
-    renting:
-    {
-     type:[Object],
-        optional:true
-    },
-    'renting.$':
-    {
-        type:Object,
+    renting: {
+        type: [Object],
         optional: true
     },
-    'renting.$.value':
-    {
-        type:String
-    },
-    'renting.$.user':
-    {
-        type:String
-    },
-    'renting.$.now':
-    {
-        type:String,
+    'renting.$': {
+        type: Object,
         optional: true
     },
-    purching:
-    {
-        type:[Object],
-        optional:true
+    'renting.$.value': {
+        type: String
     },
-    'purching.$':
-    {
-        type:Object,
+    'renting.$.user': {
+        type: String
+    },
+    'renting.$.now': {
+        type: String,
         optional: true
     },
-    'purching.$.value':
-    {
-        type:String
+    purching: {
+        type: [Object],
+        optional: true
     },
-    'purching.$.user':
-    {
-        type:String
+    'purching.$': {
+        type: Object,
+        optional: true
     },
-    'purching.$.now':
-    {
-        type:String,
+    'purching.$.value': {
+        type: String
+    },
+    'purching.$.user': {
+        type: String
+    },
+    'purching.$.now': {
+        type: String,
         optional: true
     }
 });
@@ -203,32 +194,64 @@ TabularTables.Books = new Tabular.Table({
         }
     ]
 });
-
-//TabularTables = {};
-//TabularTables.Books = new Tabular.Table({
-//    name: "BooksRecourdsRent",
-//    collection: Books,
-//    columns: [
-//        {data: "title", title: "اسم الكتاب"},
-//        {data:}
-//    ]
-//})
-//TabularTables = {};
-//TabularTables.Books = new Tabular.Table({
-//    name: "BooksRecourdsPurch",
-//    collection: Books,
-//    columns: [
-//        {data: "title", title: "اسم الكتاب"},
-//    ]
-//})
+var s = "true";
+TabularTables = {};
+TabularTables.Books = new Tabular.Table({
+    name: "BooksRecourdsRent",
+    collection: Books,
+    selector: function () {
+        return {'renting.value': s};
+    },
+    columns: [
+        {data: "title", title: "اسم الكتاب"},
+        //{data:"username()",title:"اسم الممستعير"},
+        //{
+        //    tmpl: Meteor.isClient && Template.BookRentActionBtns, class: "col-md-1"
+        //}
+    ]
+})
+TabularTables = {};
+TabularTables.Books = new Tabular.Table({
+    name: "BooksRecourdsPurch",
+    collection: Books,
+    extraFields: ['purching'],
+    selector: function () {
+        return {'purching.value': s};
+    },
+    columns: [
+        {data: "title", title: "اسم الكتاب"},
+        {data: "numberOfPayments()", title: "أسماء المشترين"}
+        //{
+        //    tmpl: Meteor.isClient && Template.BookPurchActionBtns, class: "col-md-1"
+        //}
+    ]
+})
 
 Books.helpers({
     categorieName: function () {
         //var categorie = Books.findOne(this._id).categorie;
         //return Categories.findOne(categorie).title
         var idcata = Books.findOne(this._id);
-        var idbok=Books.findOne(idcata._id).categorie;
+        var idbok = Books.findOne(idcata._id).categorie;
         return Categories.findOne(idbok).title;
+    },
+    numberOfPayments: function () {
+        var names = '';
+        if (this.purching && this.purching.length > 0) {
+            this.purching.forEach(function (elem) {
+                var user = Users.findOne(elem.user)
+                if (user && user.profile.name)
+                    names += ' ,' + user.profile.name;
+
+            })
+
+        }
+        return names ? names : "لا أحد";
+    },
+    bookrent: function () {
+        var x = Books.find({'renting.value': true});
+        return Books.findOne(x).title;
+        console.log("ss");
     }
 });
 

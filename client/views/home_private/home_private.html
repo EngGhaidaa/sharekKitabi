@@ -1,71 +1,56 @@
 <template name="HomePrivate">
-	<!--<div class="page-container container inbox-nav" id="content">-->
-		<!--<div class="row" id="title_row">-->
-
-
-                 <!--<br><br><br><br><br><br>-->
-                    <!--<div class='col-md-2'>-->
-                        <!--<p>اختر ماتريد أن تراه!!</p>-->
-                            <!--<ul class=" inbox-divider">-->
-                                <!--<li>-->
-                                    <!--<a data-toggle="collapse" data-parent="#accordion_reg" href="#rentbook" aria-expanded="true" aria-controls="rentbook">-->
-                                    <!--الكتب المستعارة-->
-                                    <!--</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a data-toggle="collapse" data-parent="#accordion_reg" href="#purchbook" aria-expanded="true" aria-controls="purchbook">-->
-                                    <!--الكتب المشتراة-->
-                                    <!--</a>-->
-                                <!--</li>-->
-                            <!--</ul>-->
-
-                    <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-                <h3 id="page_title" class="pull-left">
+    <div class="space"></div>
+    <div id="record" class="panel-collapse collapse" role="tabpanel" aria-labelledby="record">
+    <div id="sidebar-wrapper-right">
+        <nav id="spy">
+            <ul class="sidebar-nav nav">
+                <br>
+                <li class="sidebar-brand">
+                <h4 id="page_title" class="pull-right">
                     اهـلاً بـك {{userFullName}}!
-                    </h3>
-    {{#unless isAdmin}}
-<div id="wrapper">
-    <div class="overlay"></div>
-<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-    <ul class="nav sidebar-nav">
-        <li class="sidebar-brand">
-            <a href="#">
-                حسابي
-            </a>
-        </li>
-        <li>
-            <a data-toggle="collapse" data-parent="#accordion_reg" href="#rentbook" aria-expanded="true" aria-controls="rentbook">m,
-                الكتب المستعارة
-            </a>
-        </li>
-        <li>
-            <a data-toggle="collapse" data-parent="#accordion_reg" href="#purchbook" aria-expanded="true" aria-controls="purchbook">
-            الكتب المشتراة
-            </a>
-        </li>
-        </ul>
-    </nav>
-    </div>
-    <div id="rentbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rentbook">
-        <div class="panel-body">
-            {{#each rentbook}}
-                <div class="col-md-7">
-                    {{title}}
-                </div>
-            {{/each}}
-        </div>
-    </div>
-    <div id="purchbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="purchbook">
-        <div class="panel-body">
-            {{#each purchbook}}
-                <div class="col-md-7">
-                    {{title}}
-                </div>
-            {{/each}}
+                </h4>
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle">
+                        <h5><span class="glyphicon glyphicon-menu-left">الكتب المستعارة </span></h5>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            {{#each rentbook}}
+                                    {{title}}
+
+                            {{/each}}
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle">
+                        <h5><span class="glyphicon glyphicon-menu-left">الكتب المشتراة</span></h5>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            {{#each purchbook}}
+                                <div class="col-md-7">
+                                    {{title}}
+                                </div>
+                            {{/each}}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
         </div>
         </div>
-                        {{/unless}}
 
 </template>
+
+<!--<div id="purchbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="purchbook">-->
+<!--<div class="panel-body">-->
+        <!--{{#each purchbook}}-->
+<!--<div class="col-md-7">-->
+<!--{{title}}-->
+<!--</div>-->
+        <!--{{/each}}-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->

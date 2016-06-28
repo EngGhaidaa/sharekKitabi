@@ -30,23 +30,24 @@
             </div>
             <div id="booksrecordsrent" class="panel-collapse collapse" role="tabpanel" aria-labelledby="booksrecordsrent">
                 <div class="panel-body">
-                    <table class="table table-striped">
-                        {{#each booksrent}}
-                                <thead>
-                                <tr>
-                                    <th>
-                                        {{title}}
-                                    </th>
-                            {{#each this.renting}}
+                    {{> tabular table=TabularTables.BooksRecourdsRent selector=selector class="table table-striped table-bordered table-condensed"}}
+                    <!--<table class="table table-striped">-->
+                        <!--{{#each booksrent}}-->
+                                <!--<thead>-->
+                                <!--<tr>-->
+                                    <!--<th>-->
+                                        <!--{{title}}-->
+                                    <!--</th>-->
+                            <!--{{#each this.renting}}-->
 
-                                    <th>
-                                        {{username this.user}}
-                                    </th>
-                            {{/each}}
-                                </tr>
-                                </thead>
-                        {{/each}}
-                        </table>
+                                    <!--<th>-->
+                                        <!--{{username this.user}}-->
+                                    <!--</th>-->
+                            <!--{{/each}}-->
+                                <!--</tr>-->
+                                <!--</thead>-->
+                        <!--{{/each}}-->
+                        <!--</table>-->
                 </div>
             </div>
         </div>
@@ -60,23 +61,25 @@
                     </div>
                     <div id="booksrecords" class="panel-collapse collapse" role="tabpanel" aria-labelledby="booksrecords">
                         <div class="panel-body">
-                            <table class="table table-striped">
-                                {{#each bookspurch}}
-                                    <thead>
-                                    <tr>
-                                        <th>
-                                            {{title}}
-                                        </th>
-                                    {{#each this.purching}}
-                                            <th>
-                                                {{username this.user}}
-                                            </th>
-                                    {{/each}}
-                                        </tr>
-                                        </thead>
+                            {{> tabular table=TabularTables.BooksRecourdsPurch selector=selector class="table table-striped table-bordered table-condensed"}}
 
-                                {{/each}}
-                            </table>
+                            <!--<table class="table table-striped">-->
+                                <!--{{#each bookspurch}}-->
+                                    <!--<thead>-->
+                                    <!--<tr>-->
+                                        <!--<th>-->
+                                            <!--{{title}}-->
+                                        <!--</th>-->
+                                    <!--{{#each this.purching}}-->
+                                            <!--<th>-->
+                                                <!--{{username this.user}}-->
+                                            <!--</th>-->
+                                    <!--{{/each}}-->
+                                        <!--</tr>-->
+                                        <!--</thead>-->
+
+                                <!--{{/each}}-->
+                            <!--</table>-->
                         </div>
                     </div>
                 </div>

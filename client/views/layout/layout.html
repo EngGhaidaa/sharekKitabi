@@ -83,6 +83,9 @@
 <template name="PrivateLayout">
     <div id="content" class="sticky-wrapper">
         <div id="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!--<a id="menu-toggle-right" href="#" >-->
+                <!--<i class="fa fa-bars icon-large"></i>-->
+            <!--</a>-->
             <div class="navbar-container container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -96,9 +99,16 @@
 						<span class="icon-bar">
 						</span>
                     </button>
+                    <!--{{#unless isAdmin}}-->
+                    <a class="navbar-brand" data-toggle="collapse" data-parent="#accordion_reg" href="#record"
+                       aria-expanded="true" aria-controls="record">
+                        حسابي
+                    </a>
+                    <!--{{/unless}}-->
                     <a class="navbar-brand" href="#">
                         شارك كتابي
                     </a>
+
                 </div>
                 <div id="menu" class="collapse navbar-collapse">
                     {{> PrivateLayoutLeftMenu}}{{> PrivateLayoutRightMenu}}
