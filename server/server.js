@@ -227,7 +227,7 @@ Accounts.onCreateUser(function (options, user) {
     }
 
 
-        return user;
+    return user;
 });
 
 Accounts.validateLoginAttempt(function (info) {
@@ -336,3 +336,17 @@ Images.allow({
 });
 
 
+//SyncedCron.add({
+//    name: 'Crunch some important numbers for the marketing department',
+//    schedule: function(parser) {
+//        // parser is a later.parse object
+//        return parser.text('every 24 hours');
+//    },
+//    job: function() {
+//        console.log("changnjkldfdslflsdfkldsjfkljsdklflsdjfklsdjflksdjflsdjfklsdjfklsdjfed!");
+//    }
+//});
+//SyncedCron.start();
+Meteor.setInterval(function(){
+    console.log("changed");
+},1000*60*60*24)
