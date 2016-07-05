@@ -134,7 +134,7 @@ input::-webkit-inner-spin-button {
     right: 250px;
     width: 200px;
     top: 100%;
-    background: #e5e5e5;
+    /*background: #e5e5e5;*/
     position: fixed;
     height: 100%;
     overflow-y: auto;

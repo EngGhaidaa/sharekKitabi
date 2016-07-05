@@ -109,11 +109,20 @@ Meteor.methods({
 
         for ( let i = 0; i < data.length; i++ ) {
             let item   = data[ i ],
-                exists = Books.findOne( { saleId: item.saleId } );
+                exists = Books.findOne( { BookID: item.BookID  } );
 
-            if ( !exists ) {
-                Sales.insert( item );
-            } else {
+                if ( !exists ) {
+
+                  item.purch = item.purch == 1 ? true : false;
+                    //if (!Categories.findOne({number:item.categorie}))
+                    //{
+                    //   Categories.insert({number:item.categorie},{validate:false,getAutoValues:false}) ;
+                    //}
+
+                        Books.insert( item,{validate:false,getAutoValues:false} );
+                console.log("inserted");
+            }
+            else {
                 console.warn( 'Rejected. This item already exists.' );
             }
         }

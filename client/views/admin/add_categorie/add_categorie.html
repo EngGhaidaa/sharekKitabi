@@ -1,9 +1,14 @@
 <template name="addcategorie">
-    <div class="space">
-    </div>
-    <div class="row">
-        <div class='col-md-offset-4 col-md-4'>
-            <legend>إضافة تصنيف جديد</legend>
+    <div class="col-md-offset-1 col-md-10">
+            {{> TmplModalUpdatec}}
+
+            {{> TmplModalRemovec}}
+            {{> tabular table=TabularTables.Categoriesrecord class="table table-striped table-bordered table-condensed "}}
+        </div>
+    <div class="space"></div>    <div class="space"></div>
+    <div class="space"></div>
+
+    <legend>إضافة تصنيف جديد</legend>
             {{#autoForm collection="Categories"
             id="insertCategorieForm" type="insert"}}
                 {{> afQuickField name='title'}}
@@ -13,6 +18,80 @@
                 </div>
                 {{> sAlert}}
             {{/autoForm}}
-        </div>
-    </div>
+
+</template>
+<template name="CategoriesrecordActionBtns">
+
+    <button id="btnUpdate" type="button" class="btn btn-sm btn-default"  data-toggle="modal" data-target="#updateModal">
+
+        <span class="glyphicon glyphicon-pencil"></span>
+
+    </button>
+
+    <button id="btnRemove" type="button" class="btn btn-sm btn-default"  data-toggle="modal" data-target="#removeModal">
+
+        <span class="glyphicon glyphicon-remove"></span>
+
+    </button>
+
+</template>
+
+<template name="TmplModalRemovec">
+
+    <div id="removeModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">حذف</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>هل أنت متأكد من حذف هذا التصنيف</h4>
+                    <p>{{data.title}} </p>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+
+                        <button type="button" id="confirmTrue" class="btn btn-primary" data-dismiss="modal">نعم</button>
+                        <button type="button" id="confirmFalse" class="btn btn-warning" data-dismiss="modal">لا</button>
+
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</template>
+
+
+<template name="TmplModalUpdatec">
+
+    <div id="updateModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">تعديل التصنيف</h4>
+                </div>
+                <div class="modal-body">
+                    {{> UpdateCategoriesrecordForm}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">إغلاق</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</template>
+
+<template name="UpdateCategoriesrecordForm">
+    {{#autoForm collection="Categories" id="afUpdateCategories" type="update" doc=selectedCategoriesDoc}}
+        <fieldset>
+            {{> afQuickField name='number'}}
+            {{> afQuickField name='title'}}
+            {{> afQuickField name='img' }}
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Update</button>
+    {{/autoForm}}
 </template>

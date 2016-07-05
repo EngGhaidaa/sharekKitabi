@@ -6,16 +6,32 @@ BookSchema = new SimpleSchema({
     },
     author: {
         type: String,
-        label: "المؤلف"
+        label: "المؤلف",
+        optional: true
+
     },
     publisher: {
         type: String,
-        label: "الناشر"
+        label: "الناشر",
+        optional: true
+
+    },
+    Edition: {
+        type:Number,
+        label:" الطبعة",
+        optional: true
+    },
+    YearPrint:{
+        type:Number,
+        optional: true,
+        label:"سنة الطبعة"
     },
     numberOfPages: {
         type: Number,
         label: "عدد الصفحات",
-        min: 0
+        min: 0,
+        optional: true
+
     },
     categorie: {
         type: String,
@@ -35,18 +51,12 @@ BookSchema = new SimpleSchema({
         label: "لمحة عن الكتاب",
         optional: true
     },
-    purchasing: {
-        type: Number,
-        label: "سعر الشراء",
-        optional: true,
-        min: 0
-        //  regEx:^\d+(,\d{1,2})?$
-
-    },
     insurance: {
         type: Number,
         min: 0,
-        label: "سعر التأمين"
+        label: "سعر التأمين",
+        optional: true
+
     },
     rent: {
         type: Number,
@@ -65,7 +75,21 @@ BookSchema = new SimpleSchema({
     purch: {
         type: Boolean
     },
+    purchasingadmin:{
+        type: Number,
+        label: "سعر الشراء من المصدر",
+        optional: true,
+        min: 0
+    },
 
+    purchasing: {
+        type: Number,
+        label: "سعر الشراء",
+        optional: true,
+        min: 0
+        //  regEx:^\d+(,\d{1,2})?$
+
+    },
     copiesPurchas: {
         type: Number,
         label: "عدد النسخ للشراء",
@@ -75,7 +99,9 @@ BookSchema = new SimpleSchema({
     rack: {
         type: Number,
         label: "الرف",
-        min: 0
+        min: 0,
+        optional: true
+
     },
 
     source: {
@@ -171,10 +197,13 @@ TabularTables = {};
 TabularTables.Books = new Tabular.Table({
     name: "Books",
     collection: Books,
+    extraFields: ['purching','purchasingadmin','profit'],
     columns: [
         {data: "title", title: "اسم الكتاب"},
         {data: "author", title: "الكاتب"},
         {data: "publisher", title: "الناشر"},
+        {data:"Edition",title:"الطبعة"},
+        {data:"YearPrint",title:"سنة الطبعة"},
         {data: "numberOfPages", title: "عدد الصفحات"},
         {data: "categorieName()", title: "التصنيف"},
         {data: "insurance", title: "سعر التأمين"},
@@ -183,7 +212,9 @@ TabularTables.Books = new Tabular.Table({
         {data: "copiesRent", title: "عدد النسخ للاستعارة"},
         // {data:"purch",title:"متاح للشراء", class: "col-md-3"},
         {data: "copiesPurchas", title: "عدد النسخ للشراء"},
+        {data:"purchasingadmin",title:"سعر الشراء من المصدر"},
         {data: "purchasing", title: "سعر الشراء"},
+        {data:"profit()",title:"الربح"},
         {data: "rack", title: "الرف"},
         {data: "source", title: "المصدر"},
         {data: "img", title: "الصورة"},
@@ -252,6 +283,12 @@ Books.helpers({
         var x = Books.find({'renting.value': true});
         return Books.findOne(x).title;
         console.log("ss");
+    },
+    profit:function(){
+        if(this.purchasing>0)
+        {
+            return this.purchasing-this.purchasingadmin;
+        }
     }
 });
 
