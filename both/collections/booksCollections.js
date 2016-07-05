@@ -1,5 +1,10 @@
 Books = new Mongo.Collection('books');
 BookSchema = new SimpleSchema({
+    BookID :{
+        type:String,
+        unique: true
+    },
+
     title: {
         type: String,
         label: "اسم الكتاب",

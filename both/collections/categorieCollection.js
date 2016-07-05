@@ -36,15 +36,15 @@ TabularTables.Categories = new Tabular.Table({
     ]
 })
 Categories.attachSchema(categorieSchema);
-Categories.allow({
-    insert: function (userId) {
-        return (Meteor.users.isAdmin(userId));
-    },
-    update: function (userId, doc, fields, modifier) {
-        return true;
-    },
-
-    remove: function (userId, doc) {
-        return true;
-    }
-})
+//Categories.allow({
+//    insert: function (userId) {
+//        return (Meteor.users.isAdmin(userId));
+//    },
+//    update: function (userId, doc, fields, modifier) {
+//        return true;
+//    },
+//
+//    remove: function (userId, doc) {
+//        return true;
+//    }
+//})
