@@ -1,7 +1,7 @@
-Meteor.publish('categories',function(){
-  return Categories.find();
+Meteor.publish('categories',function(limit){
+  return Categories.find({},{limit:limit>=6?limit:6});
 })
-Meteor.publish('books',function(){
+Meteor.publish(null,function(){
 return  Books.find();
 })
 Meteor.publish (null , function() {
@@ -13,10 +13,10 @@ Meteor.publish('bookDetail', function (id) {
 Meteor.publish('users', function () {
     return Users.find();
 })
-Meteor.publish('rentbook', function () {
+Meteor.publish(null, function () {
     return Books.find({'renting.value':'true'});
 })
-Meteor.publish('purchbook', function () {
+Meteor.publish(null, function () {
     return Books.find({'purching.value':'true'});
 })
 Meteor.publish('appointments', function () {

@@ -1,55 +1,32 @@
 <template name="HomePrivate">
-    <div id="record" class="panel-collapse collapse" role="tabpanel" aria-labelledby="record">
-    <div id="sidebar-wrapper-right">
-        <nav id="spy">
-            <ul class="sidebar-nav nav">
-                <br>
-                <li class="sidebar-brand">
-                <h4 id="page_title" class="pull-right">
-                    اهـلاً بـك {{userFullName}}!
-                </h4>
-                </li>
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle">
-                        <h5><span class="glyphicon glyphicon-menu-left">الكتب المستعارة </span></h5>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            {{#each rentbook}}
-                                    {{title}}
-
-                            {{/each}}
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle">
-                        <h5><span class="glyphicon glyphicon-menu-left">الكتب المشتراة</span></h5>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            {{#each purchbook}}
-                                <div class="col-md-7">
-                                    {{title}}
-                                </div>
-                            {{/each}}
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        </div>
-        </div>
-
+    <div id="rec">
+    <!--<div id="username1">-->
+        <!--<h4  class="pull-right">-->
+            <!--اهـلاً بـك {{userFullName}}!-->
+        <!--</h4>-->
+    <!--</div>-->
+    <div id="rentbook1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rentbook1">
+        <ul>
+            <li>
+                {{#each rentbook}}
+                <div class="col-md-7">
+                    {{title}}
+                </div>
+                {{/each}}
+            </li>
+        </ul>
+    </div>
+    <div id="purchbook1"  class="panel-collapse collapse" role="tabpanel" aria-labelledby="purchbook1">
+        <ul class="dropdown-menu">
+            <li>
+                {{#each purchbook}}
+                    <div class="col-md-7">
+                        {{title}}
+                    </div>
+                {{/each}}
+            </li>
+        </ul>
+    </div>
+    </div>
 </template>
 
-<!--<div id="purchbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="purchbook">-->
-<!--<div class="panel-body">-->
-        <!--{{#each purchbook}}-->
-<!--<div class="col-md-7">-->
-<!--{{title}}-->
-<!--</div>-->
-        <!--{{/each}}-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->

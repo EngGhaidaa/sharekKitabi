@@ -1,62 +1,74 @@
- <template name='categories'>
+<template name='categories'>
     <div class="space">
     </div>
-<div class="col-md-offset-2 col-md-8">
-             <div class="list-group">
-                 <div class="row">
-                     <div class="col-md-3">
-                     {{>searchBox}}
-                     </div>
-                     <div class="space"></div>
-                     {{#each categories}}
-                         <!--{{#if booksCounter}}-->
-                         <div class="col-md-4">
-                             <div class="list-group-item ">
-                                 <div class="icon">
-                                     <div class="image">
-                                         <div class="info" itemprop="image">
-                                             <img class="img-responsive imgSize" src="images\1.jpg">
-                                         </div>
-                                      </div>
-                                     <div class="lecturer-data text-center ">
-                                         <a href="{{pathFor 'books' id=this.number}}" title="Title Link"><h2>{{title}}</h2></a>
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="space">
-                             </div>
-                             <div class="space">
-                             </div>
-                         </div>
-                         <!--{{/if}}-->
-                     {{/each}}
-                 </div>
-             </div>
-</div>
- </template>
- <template name="searchBox">
-     <div class="search">
-     {{> EasySearch.Input index=booksIndex attributes=attributes  }}
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            {{>searchBox}}
+        </div>
+    </div>
+    <div class="col-md-offset-2 col-md-8">
+        <div class="list-group">
+            <div class="row">
+
+                <div class="space"></div>
+                {{#each categories}}
+                <!--{{#if booksCounter}}-->
+                    <div class="col-md-4">
+                        <div class="list-group-item ">
+                            <div class="icon">
+                                <div class="image">
+                                    <div class="info" itemprop="image">
+                                        <img class="img-responsive imgSize" src="images\1.jpg">
+                                    </div>
+                                </div>
+                                <div class="lecturer-data text-center ">
+                                    <a href="{{pathFor 'books' id=this.number}}" title="Title Link"><h2>{{title}}</h2>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space">
+                        </div>
+                        <div class="space">
+                        </div>
+                    </div>
+                        <!--{{/if}}-->
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    {{#unless noMoreResult}}
+        <div class="row">
+            <div class="col-md-offset-4 col-md-4 col-xs-offset-4 col-xs-4">
+                <button class="btn btn-primary btn-block loadMore">تحميل المزيد</button>
+            </div>
+        </div>{{/unless}}
+</template>
+<template name="searchBox">
+    <div class="search">
+        {{> EasySearch.Input index=booksIndex attributes=attributes  }}
 
 
-     {{#EasySearch.IfNoResults index=booksIndex  }}
-         <div>لايوجد نتائج مشابهة لبحثك !</div>
-     {{/EasySearch.IfNoResults}}
+        {{#EasySearch.IfNoResults index=booksIndex  }}
+            <div>لايوجد نتائج مشابهة لبحثك !</div>
+        {{/EasySearch.IfNoResults}}
 
-     {{#EasySearch.IfSearching index=booksIndex  }}
-         <!--logic="OR"-->
-         <div>يبحث</div>
-     {{/EasySearch.IfSearching}}
+        {{#EasySearch.IfSearching index=booksIndex  }}
+            <!--logic="OR"-->
+            <div>يبحث</div>
+        {{/EasySearch.IfSearching}}
 
+        <div class="list-group">
+            {{#EasySearch.Each index=booksIndex }}
 
-     {{#EasySearch.Each index=booksIndex }}
-         {{#if checkInput}}
-             <div>
-                 <a href="{{pathFor 'book_details' id= this.__originalId}}" >
-                     {{title}}
-                 </a>
-             </div>
-         {{/if}}
-     {{/EasySearch.Each}}
-     </div>
- </template>
+                {{#if checkInput}}
+                    <a href="{{pathFor 'book_details'  id= this.__originalId}}" class="list-group-item">
+                        {{title}}
+                    </a>
+
+                {{/if}}
+
+            {{/EasySearch.Each}}
+        </div>
+    </div>
+</template>

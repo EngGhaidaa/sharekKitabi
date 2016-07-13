@@ -7,7 +7,6 @@ this.RecordsController = RouteController.extend({
     },
     waitOn:function()
     {
-        return [Meteor.subscribe("users"),Meteor.subscribe("rentbook"),
-            Meteor.subscribe("purchbook"),Meteor.subscribe('books')]
+        return Meteor.subscribe("users")
     }
 });

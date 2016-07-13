@@ -6,7 +6,7 @@ this.EditBookController = RouteController.extend({
         /*YIELD_TEMPLATES*/
     },
     waitOn: function () {
-        return [Meteor.subscribe('books'),Meteor.subscribe('categories')]
+        return Meteor.subscribe('categories')
 
     }
 });

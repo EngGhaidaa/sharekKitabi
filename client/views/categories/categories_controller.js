@@ -9,10 +9,9 @@ this.CategoriesController = RouteController.extend({
 
     },
     waitOn: function () {
-        return [Meteor.subscribe('books'), Meteor.subscribe('categories'),
-            Meteor.subscribe('books'), Meteor.subscribe('rentbook'), Meteor.subscribe('purchbook')
 
-        ]
+        return  Meteor.subscribe('categories',Session.get('limit'));
+
     },
     //yieldTemplates: {
     //    'categories': {to: 'main'},

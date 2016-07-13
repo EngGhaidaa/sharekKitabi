@@ -3,10 +3,10 @@ Template.HomePrivate.rendered = function() {
 };
 
 Template.HomePrivate.events({
-
-//    "click #menu-toggle-right":function(e) {
-//    e.preventDefault();
-//    $("#wrapper").toggleClass("active-right");
+    //
+    //"click #sidebar-wrapper-right":function(e) {
+    //e.preventDefault();
+    //$("#wrapper").toggleClass("active-right");
 //}
 
 });

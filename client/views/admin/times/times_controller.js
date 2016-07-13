@@ -7,6 +7,6 @@ this.TimesController = RouteController.extend({
 
     waitOn: function () {
         return [Meteor.subscribe('appointments'),Meteor.subscribe('places'),
-            Meteor.subscribe('books'),Meteor.subscribe('categories'),Meteor.subscribe("users")]
+           Meteor.subscribe('categories'),Meteor.subscribe("users")]
     }
 });

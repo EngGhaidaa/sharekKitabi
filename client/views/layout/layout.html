@@ -5,11 +5,13 @@
     </title>
 </head>
 <template name="layout">
+    <body class="has-canvas">
     {{#if currentUser}}
         {{> PrivateLayout}}
     {{else}}
         {{> PublicLayout}}
     {{/if}}
+    </body>
 </template>
 
 <template name="PublicLayout">
@@ -81,16 +83,79 @@
 </template>
 
 <template name="PrivateLayout">
+    {{#unless isAdmin}}
+    <div id="drawerExample" class="drawer drawer-right dw-xs-10 dw-sm-6 dw-md-2 fold" aria-labelledby="drawerExample">
+        <div class="drawer-controls">
+            <a href="#drawerExample" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample"
+               class="btn btn-info btn-sm "><span class="glyphicon glyphicon-tasks"></span></a>
+        </div>
+        <div class="drawer-contents">
+            <div class="drawer-heading">
+                <h2 class="drawer-title">حسابي</h2>
+            </div>
+            <ul class="drawer-nav">
+                <h3 class="text-right">
+                    اهـلاً بـك {{userFullName}}!
+                </h3>
+                <br>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <!--<div class="panel panel-default">-->
+                        <!--<div class="panel-heading" role="tab">-->
+                            <!---->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#rentbook1" aria-expanded="false" aria-controls="rentbook1">
+                                    الكتب المستعارة
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="rentbook1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rentbook1">
+                            <div class="panel-body">
+                                {{#each rentbook}}
+                                    <div class="col-md-7">
+                                        {{title}}
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#purchbook1" aria-expanded="false" aria-controls="purhbook1">
+                                    الكتب االمشتراة
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="purchbook1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="purchbook1">
+                            <div class="panel-body">
+                                {{#each purchbook}}
+                                    <div class="col-md-7">
+                                        {{title}}
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+    {{/unless}}
+
     <div id="content" class="sticky-wrapper">
         <div id="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!--<a id="menu-toggle-right" href="#" >-->
-                <!--<i class="fa fa-bars icon-large"></i>-->
+            <!--<i class="fa fa-bars icon-large"></i>-->
             <!--</a>-->
             <div class="navbar-container container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="sr-only">
-							Toggle navigation
+					        		Toggle navigation
 						</span>
 						<span class="icon-bar">
 						</span>
@@ -99,12 +164,10 @@
 						<span class="icon-bar">
 						</span>
                     </button>
-                    {{#unless isAdmin}}
-                    <a class="navbar-brand" data-toggle="collapse" data-parent="#accordion_reg" href="#record"
-                       aria-expanded="true" aria-controls="record">
-                        حسابي
-                    </a>
-                    {{/unless}}
+                        <!--<a class="navbar-brand" data-toggle="collapse" data-parent="#accordion_reg" href="#record"-->
+                           <!--aria-expanded="true" aria-controls="record">-->
+                            <!--حسابي-->
+                        <!--</a>-->
                     <a class="navbar-brand" href="#">
                         شارك كتابي
                     </a>
@@ -118,14 +181,20 @@
         <div class="navbar-spacer">
         </div>
         <div class="container">
-        <div class="row">
-            <div class="col-md-1">
-                {{> HomePrivate}}
+            <div class="row">
+                <!--<div class="col-md-1">-->
+                    <!--{{> HomePrivate}}-->
+                <!--</div>-->
+                <div class="col-md-11">
+                    <div class="row">
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                            <strong><i class="fa fa-warning"></i> Danger!</strong> <marquee><p style="font-family: Impact; font-size: 18pt">Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor!</p></marquee>
+                        </div>
+                    </div>
+                    {{> yield}}
+                </div>
             </div>
-            <div class="col-md-11">
-                 {{> yield}}
-            </div>
-        </div>
         </div>
     </div>
     <div id="footer" class="sticky-footer">
@@ -175,11 +244,11 @@
             </a>
             <ul id="menu-items" class="dropdown-menu">
                 <!--<li class="{{menuItemClass 'home_private'}}">-->
-                    <!--<a href="{{pathFor 'home_private'}}">-->
-				<!--<span class="item-title">-->
-					<!--الصفحة الشخصية-->
-				<!--</span>-->
-                    <!--</a>-->
+                <!--<a href="{{pathFor 'home_private'}}">-->
+                <!--<span class="item-title">-->
+                <!--الصفحة الشخصية-->
+                <!--</span>-->
+                <!--</a>-->
                 <!--</li>-->
                 <li class="{{menuItemClass 'user_settings'}}">
                     <a href="{{pathFor 'user_settings'}}">

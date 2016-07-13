@@ -93,5 +93,6 @@ Template.appointment.events({
    'click #btnsub':function()
    {
        Meteor.call('editappointment',app_id,placeid,dat,u,pa,b,purchvalue,rentvalue)
+       Router.go("categories");
    }
 });

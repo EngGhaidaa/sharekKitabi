@@ -23,7 +23,6 @@ AppointmentSchema = new SimpleSchema({
         min: new Date(Date.now()),
         autoform: {
             afFieldInput: {
-
                 type: "datetime-local"
             }
         }
@@ -81,7 +80,7 @@ TabularTables.Appointments = new Tabular.Table({
         {data: "placename()", title: "المكان"},
         {data: "date", title: "وقت وتاريخ التسليم", type:'datetime',
             render: function (val) {
-                return moment(val).format( " dd D/MM/YYYY hh:mm A ");
+                return moment(val).format( " dddd Do/MMMM/YYYY h:mm:ss a ");
                 //var t=Appointments.find(date);
                 //var time= formatDate(t);
                 //Meteor.call('time',time);
