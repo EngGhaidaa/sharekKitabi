@@ -1,23 +1,23 @@
-Meteor.publish('categories',function(limit){
-  return Categories.find({},{limit:limit>=6?limit:6});
+Meteor.publish(null, function () {
+    return Categories.find();
 })
-Meteor.publish(null,function(){
-return  Books.find();
+Meteor.publish("books", function (categorie,limit) {
+    return Books.find({categorie:categorie}, {limit: limit});
 })
-Meteor.publish (null , function() {
- return Images.find();
+Meteor.publish(null, function () {
+    return Images.find();
 })
 Meteor.publish('bookDetail', function (id) {
-    return Books.find({_id:id});
+    return Books.find({_id: id});
 })
 Meteor.publish('users', function () {
     return Users.find();
 })
 Meteor.publish(null, function () {
-    return Books.find({'renting.value':'true'});
+    return Books.find({'renting.value': 'true'});
 })
 Meteor.publish(null, function () {
-    return Books.find({'purching.value':'true'});
+    return Books.find({'purching.value': 'true'});
 })
 Meteor.publish('appointments', function () {
     return Appointments.find();
@@ -26,8 +26,8 @@ Meteor.publish('places', function () {
     return Places.find();
 })
 Meteor.publish('bookappoin', function (bookid) {
-    return Books.find({_id:bookid});
+    return Books.find({_id: bookid});
 })
-//Meteor.publish('bookpay', function (bookid,pay) {
-//    return Books.find({_id:bookid});
-//})
+Meteor.publish(null, function () {
+    return Adds.find();
+})

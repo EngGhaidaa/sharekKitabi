@@ -41,6 +41,34 @@ body{
 }
 
 
+.loadMore {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#edeff2', endColorstr='#ffffff',GradientType=0);
+    background-color:white;
+    -moz-border-radius:35px;
+    -webkit-border-radius:35px;
+    border-radius:35px;
+    border:4px solid #475b94;
+    display:inline-block;
+    cursor:pointer;
+    color:#7b8a8b;
+    font-size:22px;
+    padding:13px 67px;
+    text-decoration:none;
+}
+    .loadMore:hover {
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #edeff2));
+        background:-moz-linear-gradient(top, #ffffff 5%, #edeff2 100%);
+        background:-webkit-linear-gradient(top, #ffffff 5%, #edeff2 100%);
+        background:-o-linear-gradient(top, #ffffff 5%, #edeff2 100%);
+        background:-ms-linear-gradient(top, #ffffff 5%, #edeff2 100%);
+        background:linear-gradient(to bottom, #ffffff 5%, #edeff2 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#edeff2',GradientType=0);
+    background-color:#ffffff;
+}
+.loadMore:active {
+    position:relative;
+    top:1px;
+}
 
 
 .modal-header{
@@ -126,9 +154,8 @@ input::-webkit-inner-spin-button {
 
 
 
-    /*.marquee {*/
-    /*width: 300px;*/
-    /*overflow: hidden;*/
-    /*border: 1px solid #ccc;*/
-    /*background: #ccc;*/
-/*}*/
+.marquee {
+    width: 300px; /* the plugin works for responsive layouts so width is not necessary */
+    overflow: hidden;
+    border:1px solid #ccc;
+}

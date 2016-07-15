@@ -1,14 +1,16 @@
-Categories=new Mongo.Collection('categories');
-categorieSchema = new SimpleSchema({
+/**
+ * Created by omar on 7/14/16.
+ */
+Adds=new Mongo.Collection('adds');
+addSchema = new SimpleSchema({
     number:{
-      type:String,
+        type:String,
         label:"رقم",
-        optional:true,
-        unique: true
+        optional:true
     },
     title:{
         type:String,
-        label:"اسم القسم",
+        label:"اسم الإعلان",
         optional:true
     },
     img: {
@@ -24,9 +26,9 @@ categorieSchema = new SimpleSchema({
     }
 });
 TabularTables = {};
-TabularTables.Categories = new Tabular.Table({
-    name: "Categoriesrecord",
-    collection: Categories,
+TabularTables.Adds = new Tabular.Table({
+    name: "Adds",
+    collection: Adds,
     columns: [
         {data: "number", title: "رقم"},
         {data: "title", title: "اسم القسم"},
@@ -36,8 +38,8 @@ TabularTables.Categories = new Tabular.Table({
         }
     ]
 })
-Categories.attachSchema(categorieSchema);
-Categories.allow({
+Adds.attachSchema(addSchema);
+Adds.allow({
     insert: function (userId) {
         return (Meteor.users.isAdmin(userId));
     },

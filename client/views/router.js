@@ -213,5 +213,6 @@ Router.map(function () {
 	this.route("records",{path:"/admin/records",controller:"RecordsController"});
 	this.route("times",{path:"/admin/times",controller:"TimesController"});
 	this.route("importBooks",{path:"/admin/importBooks",controller:"importBooksController"});
+	this.route("add_photo",{path:"/admin/add_photo",controller:"AddPhotoController"});
 
 });

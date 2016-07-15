@@ -8,11 +8,6 @@ this.CategoriesController = RouteController.extend({
 
 
     },
-    waitOn: function () {
-
-        return  Meteor.subscribe('categories',Session.get('limit'));
-
-    },
     //yieldTemplates: {
     //    'categories': {to: 'main'},
     //    'HomePrivate': {to: 'rightSide'}

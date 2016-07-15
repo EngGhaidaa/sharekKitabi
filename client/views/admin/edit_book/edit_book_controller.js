@@ -5,8 +5,4 @@ this.EditBookController = RouteController.extend({
     yieldTemplates: {
         /*YIELD_TEMPLATES*/
     },
-    waitOn: function () {
-        return Meteor.subscribe('categories')
-
-    }
 });

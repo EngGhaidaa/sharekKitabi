@@ -11,6 +11,7 @@
     <legend>إضافة تصنيف جديد</legend>
             {{#autoForm collection="Categories"
             id="insertCategorieForm" type="insert"}}
+                {{> afQuickField name='number'}}
                 {{> afQuickField name='title'}}
                 {{> afQuickField name='img'}}
                 <div>

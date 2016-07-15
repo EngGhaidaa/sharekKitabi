@@ -91,3 +91,6 @@ AutoForm.hooks({
         }
     }
 });
+Template.UpdateBookForm.onRendered(function () {
+    debugger;
+})

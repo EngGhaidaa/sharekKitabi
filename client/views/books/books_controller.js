@@ -9,8 +9,4 @@ this.BooksController = RouteController.extend({
 
        this.render('books');
     },
-
-    waitOn: function () {
-        return Meteor.subscribe('categories');
-}
 });

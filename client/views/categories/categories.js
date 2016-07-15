@@ -25,14 +25,13 @@ Template.searchBox.helpers({
     },
     booksIndex: () => booksIndex
 });
-Template.categories.onCreated(function () {
-    if(Session.get('limit') === undefined) {
-        Session.set("limit", 6);
-    }
-});
-Template.categories.events({
-    'click .loadMore': function () {
-        debugger;
-        Session.set('limit', Session.get('limit')?Session.get('limit')+6:6);
-    }
-})
+//Template.categories.onCreated(function () {
+//    if(Session.get('limit') === undefined) {
+//        Session.set("limit", 6);
+//    }
+//});
+//Template.categories.events({
+//    'click .loadMore': function () {
+//        Session.set('limit', Session.get('limit')?Session.get('limit')+6:6);
+//    }
+//})

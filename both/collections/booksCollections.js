@@ -1,4 +1,4 @@
-Books = new Mongo.Collection('books');
+        Books = new Mongo.Collection('books');
 BookSchema = new SimpleSchema({
     BookID :{
         type:String,
@@ -202,7 +202,7 @@ TabularTables = {};
 TabularTables.Books = new Tabular.Table({
     name: "Books",
     collection: Books,
-    extraFields: ['purching','purchasingadmin','profit'],
+    extraFields: ['purching','purchasingadmin','profit',"categorie"],
     columns: [
         {data: "title", title: "اسم الكتاب"},
         {data: "author", title: "الكاتب"},
@@ -250,7 +250,7 @@ TabularTables = {};
 TabularTables.Books = new Tabular.Table({
     name: "BooksRecourdsPurch",
     collection: Books,
-    extraFields: ['purching'],
+    extraFields: ['purching','categorie'],
     selector: function () {
         return {'purching.value': s};
     },
@@ -265,11 +265,14 @@ TabularTables.Books = new Tabular.Table({
 
 Books.helpers({
     categorieName: function () {
+        debugger;
         //var categorie = Books.findOne(this._id).categorie;
         //return Categories.findOne(categorie).title
         var idcata = Books.findOne(this._id);
         var idbok = Books.findOne(idcata._id).categorie;
-        return Categories.findOne(idbok).title;
+
+        return Categories.findOne({number:idbok}).title;
+
     },
     numberOfPayments: function () {
         var names = '';

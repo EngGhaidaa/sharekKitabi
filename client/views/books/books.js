@@ -10,3 +10,23 @@ Template.books.helpers({
   //  return true;
   //}
 });
+booksSubscribe =  new SubsManager();
+Template.books.onCreated(function () {
+  var instance = this ;
+  instance.state = new ReactiveDict();
+  debugger;
+  instance.state.set('limit',6);
+  instance.autorun(function(){
+    debugger;
+    var limit = instance.state.get('limit');
+    booksSubscribe.subscribe('books', Router.current().params.id,limit);
+  })
+
+});
+Template.books.events({
+  'click .loadMore': function (event,template) {
+    debugger;
+    var limit = template.state.get('limit');
+    template.state.set('limit',limit+6)
+  }
+})

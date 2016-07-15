@@ -46,7 +46,6 @@ Meteor.methods({
          rating = (5 * ratings[5] + 4 * ratings[4] + 3 * ratings[3] + 2 * ratings[2] + 1 * ratings[1]) / (_.reduce(ratings, function (memo, num) {
                 return memo + num;
             }, 0))}
-
         Books.update({_id: bookId}, {$set: {rating: parseInt(rating)}});
 
     },

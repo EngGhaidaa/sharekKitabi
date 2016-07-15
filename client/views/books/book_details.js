@@ -2,6 +2,9 @@ Template.details.helpers({
     thisBook: function () {
         return Books.findOne({_id: Router.current().params.id});
     },
+    catname:function(catid){
+        return Categories.findOne({_id:catid}).title;
+    }
 
 });
 

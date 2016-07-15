@@ -4,13 +4,49 @@
         شارك كتابي
     </title>
 </head>
+<template name="marquee">
+    <div class="row">
+
+        <div class='marquee' data-duration='5000' data-gap='10' data-dupilcated='true'>
+            dkfjhjdsklkjhvjkldkfjhjdkl;kfljghjjhjkjkkoyfru
+        </div>
+
+        <!--<div class="container">-->
+        <!--<div class="row">-->
+        <!--<div class="span12">-->
+        <!--<div class="well">-->
+        <!--<div id="myCarousel" class="carousel fdi-Carousel slide">-->
+        <!--&lt;!&ndash; Carousel items &ndash;&gt;-->
+        <!--<div class="carousel fdi-Carousel slide" id="eventCarousel">-->
+        <!--<div class="carousel-inner onebyone-carosel">-->
+        <!--<div class="item">-->
+
+        <!--</div>-->
+        <!--<a class="left carousel-control" href="#eventCarousel" data-slide="prev"></a>-->
+        <!--<a class="right carousel-control" href="#eventCarousel" data-slide="next"></a>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;/carousel-inner&ndash;&gt;-->
+        <!--</div>&lt;!&ndash;/myCarousel&ndash;&gt;-->
+        <!--</div>&lt;!&ndash;/well&ndash;&gt;-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+    </div>
+</template>
 <template name="layout">
     <body class="has-canvas">
-    {{#if currentUser}}
-        {{> PrivateLayout}}
-    {{else}}
-        {{> PublicLayout}}
-    {{/if}}
+
+    <!--{{#if currentUser}}-->
+    <!--{{> PrivateLayout}}-->
+            <!--{{else}}-->
+    <!--{{> PublicLayout}}-->
+            <!--{{/if}}-->
+
+    <div class="row">{{>marquee}}
+    </div>
+
     </body>
 </template>
 
@@ -84,66 +120,79 @@
 
 <template name="PrivateLayout">
     {{#unless isAdmin}}
-    <div id="drawerExample" class="drawer drawer-right dw-xs-10 dw-sm-6 dw-md-2 fold" aria-labelledby="drawerExample">
-        <div class="drawer-controls">
-            <a href="#drawerExample" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample"
-               class="btn btn-info btn-sm "><span class="glyphicon glyphicon-tasks"></span></a>
-        </div>
-        <div class="drawer-contents">
-            <div class="drawer-heading">
-                <h2 class="drawer-title">حسابي</h2>
+        <div id="drawerExample" class="drawer drawer-right dw-xs-10 dw-sm-6 dw-md-2 fold"
+             aria-labelledby="drawerExample">
+            <div class="drawer-controls">
+                <a href="#drawerExample" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample"
+                   class="btn btn-info btn-sm "><span class="glyphicon glyphicon-tasks"></span></a>
             </div>
-            <ul class="drawer-nav">
-                <h3 class="text-right">
-                    اهـلاً بـك {{userFullName}}!
-                </h3>
-                <br>
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                    <!--<div class="panel panel-default">-->
-                        <!--<div class="panel-heading" role="tab">-->
-                            <!---->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingTwo">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#rentbook1" aria-expanded="false" aria-controls="rentbook1">
-                                    الكتب المستعارة
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="rentbook1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rentbook1">
-                            <div class="panel-body">
-                                {{#each rentbook}}
-                                    <div class="col-md-7">
-                                        {{title}}
-                                    </div>
-                                {{/each}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingThree">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#purchbook1" aria-expanded="false" aria-controls="purhbook1">
-                                    الكتب االمشتراة
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="purchbook1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="purchbook1">
-                            <div class="panel-body">
-                                {{#each purchbook}}
-                                    <div class="col-md-7">
-                                        {{title}}
-                                    </div>
-                                {{/each}}
-                            </div>
-                        </div>
-                    </div>
+            <div class="drawer-contents">
+                <div class="drawer-heading">
+                    <h2 class="drawer-title">حسابي</h2>
                 </div>
-            </ul>
+                <ul class="drawer-nav">
+                    <h3 class="text-right">
+                        اهـلاً بـك {{userFullName}}!
+                    </h3>
+                    <br>
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <!--<div class="panel panel-default">-->
+                        <!--<div class="panel-heading" role="tab">-->
+                        <!---->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                       href="#rentbook1" aria-expanded="false" aria-controls="rentbook1">
+                                        الكتب المستعارة
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="rentbook1" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="rentbook1">
+                                <div class="panel-body">
+                                    {{#each rentbook}}
+                                        <div class="col-md-7">
+                                            {{title}}
+                                        </div>
+                                    {{else}}
+                                        <div class="col-md-7">
+                                            لا يوجد
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                       href="#purchbook1" aria-expanded="false" aria-controls="purhbook1">
+                                        الكتب االمشتراة
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="purchbook1" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="purchbook1">
+                                <div class="panel-body">
+                                    {{#each purchbook}}
+                                        <div class="col-md-7">
+                                            {{title}}
+                                        </div>
+                                    {{else}}
+                                        <div class="col-md-7">
+                                            لا يوجد
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
         </div>
-    </div>
     {{/unless}}
 
     <div id="content" class="sticky-wrapper">
@@ -164,10 +213,10 @@
 						<span class="icon-bar">
 						</span>
                     </button>
-                        <!--<a class="navbar-brand" data-toggle="collapse" data-parent="#accordion_reg" href="#record"-->
-                           <!--aria-expanded="true" aria-controls="record">-->
-                            <!--حسابي-->
-                        <!--</a>-->
+                    <!--<a class="navbar-brand" data-toggle="collapse" data-parent="#accordion_reg" href="#record"-->
+                    <!--aria-expanded="true" aria-controls="record">-->
+                    <!--حسابي-->
+                    <!--</a>-->
                     <a class="navbar-brand" href="#">
                         شارك كتابي
                     </a>
@@ -183,15 +232,19 @@
         <div class="container">
             <div class="row">
                 <!--<div class="col-md-1">-->
-                    <!--{{> HomePrivate}}-->
+                <!--{{> HomePrivate}}-->
                 <!--</div>-->
                 <div class="col-md-11">
-                    <div class="row">
-                        <div class="alert alert-danger alert-dismissible" role="alert">
-                            <button type="button" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                            <strong><i class="fa fa-warning"></i> Danger!</strong> <marquee><p style="font-family: Impact; font-size: 18pt">Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor!</p></marquee>
-                        </div>
-                    </div>
+                    <!--<div class="row">-->
+                    <!--<div class="alert  alert-dismissible" role="alert">-->
+                    <!--&lt;!&ndash;<button type="button" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>&ndash;&gt;-->
+                    <!--<strong><i class="fa fa-image"></i></strong> <marquee><p style="font-family: Impact; font-size: 18pt">-->
+                    {{#each adds}}
+                        <!--lfdjdfttdssjfhgf-->
+                    {{/each}}
+                    <!--</p></marquee>-->
+                    <!--</div>-->
+                    <!--</div>-->
                     {{> yield}}
                 </div>
             </div>

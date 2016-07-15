@@ -10,7 +10,7 @@ this.BookDetailsController = RouteController.extend({
     },
 
 waitOn: function () {
-    return [Meteor.subscribe('bookDetail',this.params.id),Meteor.subscribe('categories')
-    ]
+    return Meteor.subscribe('bookDetail',this.params.id)
+
 }
 });

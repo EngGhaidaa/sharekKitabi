@@ -18,7 +18,7 @@
                             <div class="icon">
                                 <div class="image">
                                     <div class="info" itemprop="image">
-                                        <img class="img-responsive imgSize" src="images\1.jpg">
+                                        <img class="img-responsive imgSize" src="{{getBookPic img}}">
                                     </div>
                                 </div>
                                 <div class="lecturer-data text-center ">
@@ -37,12 +37,12 @@
             </div>
         </div>
     </div>
-    {{#unless noMoreResult}}
-        <div class="row">
-            <div class="col-md-offset-4 col-md-4 col-xs-offset-4 col-xs-4">
-                <button class="btn btn-primary btn-block loadMore">تحميل المزيد</button>
-            </div>
-        </div>{{/unless}}
+    <!--{{#unless noMoreResult}}-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-offset-4 col-md-4 col-xs-offset-4 col-xs-4">-->
+                <!--<button class="btn btn-primary btn-block loadMore">تحميل المزيد</button>-->
+            <!--</div>-->
+        <!--</div>{{/unless}}-->
 </template>
 <template name="searchBox">
     <div class="search">

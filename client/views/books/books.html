@@ -3,51 +3,54 @@
     <div class="row">
         <div class="col-md-offset-4 col-md-4">
             {{>searchBox}}
-        </div></div>
-  <div class="row">
+        </div>
+    </div>
+    <div class="row">
 
-   <div class='col-md-offset-2 col-md-8'>
+        <div class='col-md-offset-2 col-md-8'>
 
-    <div class="list-group">
-        <div class="row">
+            <div class="list-group">
+                <div class="row">
 
-      {{#each books}}
-      <div class="col-md-6">
+                    {{#each books}}
+                        <div class="col-md-6">
                 <span itemprop="name">
                     <h3>
                         {{title}}
                     </h3>
                 </span>
-        <div class="list-group-item text-right">
-          <div class="icon">
-           <div class="info " itemprop="image">
-            <img class="img-responsive "  src={{getBookPic img}}>
-             <div class="lecturer-data">
-               <p class="text-right">
-                   اسم المؤلف:{{author}} <br>
-                سعر التأمين:{{insurance}} Tl <br>
-                سعر الاستعار:{{rent}} Tl <br>
-                   {{#if purch}}
-                سعر الشراء:{{purchasing}} Tl<br>
-                   {{else}}
-                       غير متوفر للشراء حالياً<br>
-                   {{/if}}
-               </p>
-              </div>
-               <h4>
-             <div class="more">
-              <a href="{{pathFor 'book_details' id=this._id}}" title="Detail Link">
-               <i class="fa fa-angle-double-left"></i>  المزيد
-              </a>
-             </div>
-               </h4>
-           </div>
-          </div>
+                            <div class="list-group-item text-right">
+                                <div class="icon">
+                                    <div class="info " itemprop="image">
+                                        <img class="img-responsive " src={{getBookPic img}}>
+                                        <div class="lecturer-data">
+                                            <p class="text-right">
+                                                اسم المؤلف:{{author}} <br>
+                                                سعر التأمين:{{insurance}} Tl <br>
+                                                سعر الاستعار:{{rent}} Tl <br>
+                                                {{#if purch}}
+                                                    سعر الشراء:{{purchasing}} Tl<br>
+                                                {{else}}
+                                                    غير متوفر للشراء حالياً<br>
+                                                {{/if}}
+                                            </p>
+                                        </div>
+                                        <h4>
+                                            <div class="more">
+                                                <a href="{{pathFor 'book_details' id=this._id}}" title="Detail Link">
+                                                    <i class="fa fa-angle-double-left"></i> المزيد
+                                                </a>
+                                            </div>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+
+                </div>
+            </div>
         </div>
-      </div>
-      {{/each}}
-        </div>
-     </div>
     </div>
-   </div>
+    <div class="text-center"><a href="#" class="loadMore">تحميل المزيـد</a></div>
 </template>
