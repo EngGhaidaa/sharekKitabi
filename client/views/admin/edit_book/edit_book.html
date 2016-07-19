@@ -85,6 +85,7 @@
 <template name="UpdateBookForm">
     {{#autoForm collection="Books" id="afUpdateBook" type="update" doc=selectedBookDoc}}
         <fieldset>
+            {{>afQuickField name="BookID"}}
             {{> afQuickField name='title'}}
             {{> afQuickField name='author'}}
             {{> afQuickField name='publisher' }}
@@ -112,6 +113,7 @@
      <legend>إضافة كتاب جديد</legend>
             {{#autoForm collection="Books"
             id="insertBookForm" type="insert"}}
+                {{>afQuickField name="BookID"}}
                 {{> afQuickField name='title'}}
                 {{> afQuickField name='author'}}
                 {{> afQuickField name='publisher' }}

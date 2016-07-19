@@ -13,8 +13,7 @@
                     </div>
                     <div id="purchbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="purchbook">
                         <table  class="table table-striped">
-                            {{#each appointment}}
-                                {{#if appointmentpay}}
+                            {{#each appointment "purch" }}
                                 <thead>
                                 <tr>
                                     <th>
@@ -25,25 +24,27 @@
                                     </th>
                                 </tr>
                                 </thead>
-                                {{#each this.user}}
+                                {{#each users "purch" }}
                                     <tbody>
                                     <tr>
                                         <td>
-                                            {{userna this.id}}
+                                            {{userna id}}
                                         </td>
                                         <td>
-                                            {{bookname this.book}}
+                                            {{bookname book}}
                                         </td>
                                         <td>
-                                            {{paytype this.pay}}
+                                            {{paytype pay}}
                                         </td>
                                         <td>
-                                            {{payvalue this.rent}}
+                                            {{payvalue rent}}
                                         </td>
                                     </tr>
                                     </tbody>
                                 {{/each}}
-                                    {{/if}}
+                                {{else}}
+                                <br>
+                                لايوجد كتب
                             {{/each}}
                             </table>
                     </div>
@@ -58,9 +59,9 @@
                             </a>
                         </h4>
                     </div>
-                    <div id="purchbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="purchbook">
+                    <div id="rentbook" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rentbook">
                         <table  class="table table-striped">
-                            {{#each appointments}}
+                            {{#each appointment "rent"}}
                                 <thead>
                                 <tr>
                                     <th>
@@ -71,7 +72,7 @@
                                     </th>
                                 </tr>
                                 </thead>
-                                {{#each this.user}}
+                                {{#each users "rent"}}
                                     <tbody>
                                     <tr>
                                         <td>
@@ -89,6 +90,9 @@
                                     </tr>
                                     </tbody>
                                 {{/each}}
+                            {{else}}
+                                <br>
+                                لايوجد كتب
                             {{/each}}
                         </table>
                     </div>
@@ -150,7 +154,7 @@
                                     {{> afQuickField name='place'}}
                                     {{> afQuickField name='date'}}
                                         <button type="submit" class="btn btn-primary" id="submitApp">إدخال</button>
-                                    {{> sAlert}}
+                                    <!--{{> sAlert}}-->
                                 {{/autoForm}}
                             </div>
                         </div>
@@ -173,7 +177,7 @@
                                     <div>
                                         <button type="submit" class="btn btn-primary" id="submitpl">إدخال</button>
                                     </div>
-                                    {{> sAlert}}
+                                    <!--{{> sAlert}}-->
                                 {{/autoForm}}
                             </div>
                         </div>

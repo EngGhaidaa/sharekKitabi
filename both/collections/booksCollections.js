@@ -2,12 +2,13 @@
 BookSchema = new SimpleSchema({
     BookID :{
         type:String,
+        label:"رقم الكتاب",
         unique: true
     },
 
     title: {
         type: String,
-        label: "اسم الكتاب",
+        label: "اسم الكتاب"
     },
     author: {
         type: String,
@@ -45,7 +46,7 @@ BookSchema = new SimpleSchema({
             type: 'select',
             options: function () {
                 return Categories.find().map(function (c) {
-                    return {label: c.title, value: c._id}
+                    return {label: c.title, value: c.number}
                 })
             },
             firstOption: 'اختر التصنيف المناسب'
@@ -204,6 +205,7 @@ TabularTables.Books = new Tabular.Table({
     collection: Books,
     extraFields: ['purching','purchasingadmin','profit',"categorie"],
     columns: [
+        {data:"BookID",title:"رقم الكتاب"},
         {data: "title", title: "اسم الكتاب"},
         {data: "author", title: "الكاتب"},
         {data: "publisher", title: "الناشر"},

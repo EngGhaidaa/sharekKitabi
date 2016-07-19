@@ -164,24 +164,28 @@ Template.PrivateLayout.helpers({
 		}
 	}
 });
-Template.marquee.onRendered(function() {
-	$('.marquee').marquee({
-		//speed in milliseconds of the marquee
-		duration: 15000,
-		//gap in pixels between the tickers
-		gap: 50,
-		//time in milliseconds before the marquee will start animating
-		delayBeforeStart: 0,
-		//'left' or 'right'
-		direction: 'left',
-		//true or false - should the marquee be duplicated to show an effect of continues flow
-		duplicated: true
-	});
-});
+var adid;
 Template.marquee.helpers({
 
-	addphoto:function(){
-		return Adds.find();
+	itemactive:function(){
+		debugger;
+		var x=Adds.findOne();
+		adid=x.number;
+		return x;
+	},
+	adphoto:function(){
+		var i = 0;
+		for (i;i< Adds.find().fetch().length;)
+		{
+			var itemClass = Adds.find({number:i})? "item active" : "item";
+			return Adds.find();
+		}
 	}
 })
+	Template.marquee.onRendered(function() {
+		$('#myCarousel').carousel({
+			interval: 3000
+		})
+		$( '.carousel-inner').find('.item:first' ).addClass( 'active' );
 
+})

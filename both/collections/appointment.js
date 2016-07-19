@@ -18,9 +18,17 @@ AppointmentSchema = new SimpleSchema({
         }
     },
     date: {
-        type: Date,
+        type: String,
         label: "وقت وتاريخ التسليم",
-        min: new Date(Date.now()),
+        custom:function(){
+            //var momentA = moment(this.value,"YYYY-MM-DDTh:mm:ss.zzzz");
+            //var momentB = moment(new Date(),"dddd YYYY/MM/DD// h:mm a");
+            var date=new Date();
+           var date2=new Date(this.value)
+            if (date2 < date)
+                return "baddate";
+
+        },
         autoform: {
             afFieldInput: {
                 type: "datetime-local"
@@ -80,7 +88,7 @@ TabularTables.Appointments = new Tabular.Table({
         {data: "placename()", title: "المكان"},
         {data: "date", title: "وقت وتاريخ التسليم", type:'datetime',
             render: function (val) {
-                return moment(val).format( " dddd Do/MMMM/YYYY h:mm:ss a ");
+                return moment(val).format( "dddd YYYY/MM/DD// h:mm a ");
                 //var t=Appointments.find(date);
                 //var time= formatDate(t);
                 //Meteor.call('time',time);

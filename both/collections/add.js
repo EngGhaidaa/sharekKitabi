@@ -4,9 +4,10 @@
 Adds=new Mongo.Collection('adds');
 addSchema = new SimpleSchema({
     number:{
-        type:String,
+        type:Number,
         label:"رقم",
-        optional:true
+        unique:true,
+        min:0
     },
     title:{
         type:String,
@@ -31,10 +32,10 @@ TabularTables.Adds = new Tabular.Table({
     collection: Adds,
     columns: [
         {data: "number", title: "رقم"},
-        {data: "title", title: "اسم القسم"},
+        {data: "title", title: "اسم الإعلان"},
         {data: "img", title: "ألصورة"},
         {
-            tmpl: Meteor.isClient && Template.CategoriesrecordActionBtns, class: "col-md-1"
+            tmpl: Meteor.isClient && Template.AddActionBtns, class: "col-md-1"
         }
     ]
 })

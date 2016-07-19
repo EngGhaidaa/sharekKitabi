@@ -33,6 +33,7 @@ AutoForm.addHooks('afUpdateBook', {
     before: {
         update:
             function(doc){
+                doc.$set.categorie=this
                 if(!doc.$set.purch) {
                     doc.$set.purchasing = 0;
                     doc.$set.copiesPurchas = 0;

@@ -55,14 +55,14 @@ body{
     padding:13px 67px;
     text-decoration:none;
 }
-    .loadMore:hover {
-        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #edeff2));
-        background:-moz-linear-gradient(top, #ffffff 5%, #edeff2 100%);
-        background:-webkit-linear-gradient(top, #ffffff 5%, #edeff2 100%);
-        background:-o-linear-gradient(top, #ffffff 5%, #edeff2 100%);
-        background:-ms-linear-gradient(top, #ffffff 5%, #edeff2 100%);
-        background:linear-gradient(to bottom, #ffffff 5%, #edeff2 100%);
-        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#edeff2',GradientType=0);
+.loadMore:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #edeff2));
+    background:-moz-linear-gradient(top, #ffffff 5%, #edeff2 100%);
+    background:-webkit-linear-gradient(top, #ffffff 5%, #edeff2 100%);
+    background:-o-linear-gradient(top, #ffffff 5%, #edeff2 100%);
+    background:-ms-linear-gradient(top, #ffffff 5%, #edeff2 100%);
+    background:linear-gradient(to bottom, #ffffff 5%, #edeff2 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#edeff2',GradientType=0);
     background-color:#ffffff;
 }
 .loadMore:active {
@@ -81,7 +81,7 @@ body{
     background-color: #ffffff;
 }
 .modal-body{
-   background-color: #ffffff;
+    background-color: #ffffff;
     padding:40px 50px;
     color:black !important;
     /*text-align: center;*/
@@ -153,9 +153,57 @@ input::-webkit-inner-spin-button {
 }
 
 
-
-.marquee {
-    width: 300px; /* the plugin works for responsive layouts so width is not necessary */
-    overflow: hidden;
-    border:1px solid #ccc;
+#myCarousel .nav a small
+{
+    display: block;
 }
+#myCarousel .nav
+{
+    background: #eee;
+}
+.nav-justified > li > a
+{
+    border-radius: 0px;
+}
+
+
+/*.marquee {*/
+    /*height: 210px;*/
+    /*overflow: hidden;*/
+    /*position: relative;*/
+/*}*/
+/*.marquee img {*/
+    /*position: absolute;*/
+    /*width: 80%;*/
+    /*height: 80%;*/
+    /*margin: 0;*/
+    /*!* Starting position *!*/
+    /*-moz-transform:translateX(100%);*/
+    /*-webkit-transform:translateX(100%);*/
+    /*transform:translateX(100%);*/
+    /*!* Apply animation to this element *!*/
+    /*-moz-animation: marquee 15s linear infinite;*/
+    /*-webkit-animation: marquee 15s linear infinite;*/
+    /*animation: marquee 15s linear infinite;*/
+/*}*/
+/*!* Move it (define the animation) *!*/
+/*@-moz-keyframes marquee {*/
+    /*0%   { -moz-transform: translateX(100%); }*/
+    /*100% { -moz-transform: translateX(-100%); }*/
+/*}*/
+/*@-webkit-keyframes marquee {*/
+    /*0%   { -webkit-transform: translateX(100%); }*/
+    /*100% { -webkit-transform: translateX(-100%); }*/
+/*}*/
+/*@keyframes marquee {*/
+    /*0%   {*/
+        /*-moz-transform: translateX(100%); !* Firefox bug fix *!*/
+        /*-webkit-transform: translateX(100%); !* Firefox bug fix *!*/
+        /*transform: translateX(100%);*/
+    /*}*/
+    /*100% {*/
+        /*-moz-transform: translateX(-100%); !* Firefox bug fix *!*/
+        /*-webkit-transform: translateX(-100%); !* Firefox bug fix *!*/
+        /*transform: translateX(-100%);*/
+    /*}*/
+/*}*/

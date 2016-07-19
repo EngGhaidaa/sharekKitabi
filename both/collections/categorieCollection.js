@@ -3,7 +3,6 @@ categorieSchema = new SimpleSchema({
     number:{
       type:String,
         label:"رقم",
-        optional:true,
         unique: true
     },
     title:{

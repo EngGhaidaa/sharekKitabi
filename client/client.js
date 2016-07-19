@@ -83,7 +83,7 @@ Helpers.formatDate = function(date, dateFormat) {
 		return "";
 	}
 
-	var f =  "dddd MM/DD/YYYY hh:mma";
+	var f =  "dddd YYYY/MM/DD// h:mm a";
 
 	if(_.isString(date)) {
 		if(date.toUpperCase() == "NOW") {
@@ -152,4 +152,9 @@ Template.registerHelper('getCategoriePic', function (id) {
 	if (pic)
 		return pic.url();
 });
-
+Template.registerHelper('getAdPic', function (id) {
+	var pic =  Images.findOne({_id:id})
+	if (pic)
+		return pic.url();
+});
+SimpleSchema.messages({baddate:"تم إدخال تاريخ خاطئ"});

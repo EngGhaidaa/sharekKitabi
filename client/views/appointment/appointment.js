@@ -4,7 +4,7 @@ function formatDate(date) {
         return "";
     }
     var date;
-    var f =  "dddd MM/DD/YYYY hh:mma";
+    var f =  "dddd YYYY/MM/DD// h:mm a";
 
     if(_.isString(date)) {
         if(date.toUpperCase() == "NOW") {
@@ -92,7 +92,8 @@ Template.appointment.events({
     },
    'click #btnsub':function()
    {
-       Meteor.call('editappointment',app_id,placeid,dat,u,pa,b,purchvalue,rentvalue)
+       Meteor.call('editappointment',app_id,placeid,dat,u,pa,b,purchvalue,rentvalue);
        Router.go("categories");
+       $(".modal-backdrop").remove();
    }
 });
