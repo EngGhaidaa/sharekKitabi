@@ -165,45 +165,6 @@ input::-webkit-inner-spin-button {
 {
     border-radius: 0px;
 }
-
-
-/*.marquee {*/
-    /*height: 210px;*/
-    /*overflow: hidden;*/
-    /*position: relative;*/
-/*}*/
-/*.marquee img {*/
-    /*position: absolute;*/
-    /*width: 80%;*/
-    /*height: 80%;*/
-    /*margin: 0;*/
-    /*!* Starting position *!*/
-    /*-moz-transform:translateX(100%);*/
-    /*-webkit-transform:translateX(100%);*/
-    /*transform:translateX(100%);*/
-    /*!* Apply animation to this element *!*/
-    /*-moz-animation: marquee 15s linear infinite;*/
-    /*-webkit-animation: marquee 15s linear infinite;*/
-    /*animation: marquee 15s linear infinite;*/
-/*}*/
-/*!* Move it (define the animation) *!*/
-/*@-moz-keyframes marquee {*/
-    /*0%   { -moz-transform: translateX(100%); }*/
-    /*100% { -moz-transform: translateX(-100%); }*/
-/*}*/
-/*@-webkit-keyframes marquee {*/
-    /*0%   { -webkit-transform: translateX(100%); }*/
-    /*100% { -webkit-transform: translateX(-100%); }*/
-/*}*/
-/*@keyframes marquee {*/
-    /*0%   {*/
-        /*-moz-transform: translateX(100%); !* Firefox bug fix *!*/
-        /*-webkit-transform: translateX(100%); !* Firefox bug fix *!*/
-        /*transform: translateX(100%);*/
-    /*}*/
-    /*100% {*/
-        /*-moz-transform: translateX(-100%); !* Firefox bug fix *!*/
-        /*-webkit-transform: translateX(-100%); !* Firefox bug fix *!*/
-        /*transform: translateX(-100%);*/
-    /*}*/
-/*}*/
+#jumbotroncontact { background: #358CCE; color: #FFF; border-radius: 0px;
+    padding-top: 24px; padding-bottom: 24px; } small { color: #FFF; }
+#h1contact small { font-size: 24px; }

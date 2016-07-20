@@ -24,12 +24,7 @@
                 </div>{{/each}}
             </div>
             <!-- End Carousel Inner -->
-            <!--<ul class="nav nav-pills nav-justified">-->
-                <!--<li data-target="#myCarousel" data-slide-to="0" class="active">About</li>-->
-                <!--{{#each adphoto}}-->
-                <!--<li data-target="#myCarousel" data-slide-to="1">{{tittle}}</li>-->
-               <!--{{/each}}-->
-            <!--</ul>-->
+
         </div>
         <!-- End Carousel -->
     </div>
@@ -65,7 +60,7 @@
 						<span class="icon-bar">
 						</span>
                     </button>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{pathFor 'home_public'}}">
                         شارك كتابي
                     </a>
                 </div>
@@ -79,7 +74,13 @@
     <div id="footer" class="sticky-footer">
         <div class="footer-container container">
             <p class="text-muted">
-                mmmmmm
+            <div class="row">
+                <div class="col-md-5">
+                    <a class="facebook" href="http://facebook.com/Sharekkitabi"><i class="fa fa-facebook fa-2x"></i></a>
+                    <a class="twitter" href="http://twitter.com/Sharekkitabi"><i class="fa fa-twitter fa-2x"></i></a>
+                    <a class="instagram" href="http://instagram.com/Sharekkitabi"><i class="fa fa-instagram fa-2x"></i></a>
+                </div>
+            </div>
             </p>
         </div>
     </div>
@@ -91,6 +92,34 @@
             <a href="{{pathFor 'categories'}}">
 				<span class="item-title">
 					المكتبة
+				</span>
+            </a>
+        </li>
+        <li id="menu-item-simple" class="{{menuItemClass 'categories'}}">
+            <a href="{{pathFor 'news'}}">
+				<span class="item-title">
+                    أخبارنا
+                </span>
+            </a>
+        </li>
+        <li id="menu-item-simple" class="{{menuItemClass 'categories'}}">
+            <a href="{{pathFor 'work'}}">
+				<span class="item-title">
+					فرص عمل
+				</span>
+            </a>
+        </li>
+        <li id="menu-item-simple" class="{{menuItemClass 'categories'}}">
+            <a href="{{pathFor 'contact'}}">
+				<span class="item-title">
+					تواصل معنا!
+				</span>
+            </a>
+        </li>
+        <li id="menu-item-simple" class="{{menuItemClass 'categories'}}">
+            <a href="{{pathFor 'info'}}">
+				<span class="item-title">
+					من نحن؟
 				</span>
             </a>
         </li>
@@ -216,7 +245,7 @@
                     <!--aria-expanded="true" aria-controls="record">-->
                     <!--حسابي-->
                     <!--</a>-->
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{pathFor 'home_public'}}">
                         شارك كتابي
                     </a>
 
@@ -270,16 +299,34 @@
 				</span>
             </a>
         </li>
-        <!--{{#unless isAdmin}}
-
         <li id="menu-item-simple" class="{{menuItemClass 'categories'}}">
-        <a href="{{pathFor 'categories'}}">
-           <span class="item-title">
-					العودة إلى المكتبة
-				</span>
-        </a>
+            <a href="{{pathFor 'news'}}">
+				<span class="item-title">
+                    أخبارنا
+                </span>
+            </a>
         </li>
-{{/unless}}-->
+        <li id="menu-item-simple" class="{{menuItemClass 'categories'}}">
+            <a href="{{pathFor 'work'}}">
+				<span class="item-title">
+					فرص عمل
+				</span>
+            </a>
+        </li>
+        <li id="menu-item-simple" class="{{menuItemClass 'categories'}}">
+            <a href="{{pathFor 'contact'}}">
+				<span class="item-title">
+					تواصل معنا!
+				</span>
+            </a>
+        </li>
+        <li id="menu-item-simple" class="{{menuItemClass 'categories'}}">
+            <a href="{{pathFor 'info'}}">
+				<span class="item-title">
+					من نحن؟
+				</span>
+            </a>
+        </li>
 
     </ul>
 </template>

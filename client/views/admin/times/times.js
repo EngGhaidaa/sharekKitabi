@@ -218,17 +218,7 @@ Template.times.helpers
         return username;
 
     },
-    paytype: function (pay) {
-        var type;
-        var paytyp = Appointments.find(pay);
-        if (pay == "true") {
-            type = 'دفع يدوي';
-        }
-        else {
-            type = 'تم الدفع';
-        }
-        return type;
-    },
+
     payvalue: function (rent) {
         var value;
         if (rent == 'true') {

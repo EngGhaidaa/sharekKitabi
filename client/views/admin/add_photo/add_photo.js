@@ -5,7 +5,10 @@ AutoForm.hooks({
                 effect: 'genie', position: 'top-right',
                 timeout: '1000', onRouteClose: false,
                 stack: false, offset: '80px'});
+            location.reload();
+
         }
+
     }
 })
 Template.AddActionBtns.events({
@@ -50,6 +53,8 @@ AutoForm.addHooks('afUpdateAdds', {
                 positionClass: "toast-top-center",
                 timeOut: "500"
             })
+            location.reload();
+
         }
 });
 Template.UpdateAddForm.helpers({

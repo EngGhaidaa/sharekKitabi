@@ -49,7 +49,7 @@ Meteor.methods({
         Books.update({_id: bookId}, {$set: {rating: parseInt(rating)}});
 
     },
-    editappointment:function(app_id,placeid,dat,u,pa,b,purch,rent) {
+    editappointment:function(app_id,placeid,dat,u,b,purch,rent) {
         if (
             //Appointments.find({_id: app_id})&&
        !Appointments.findOne({'user.id':u,'user.book':b,_id:app_id}))
@@ -61,14 +61,9 @@ Meteor.methods({
                         user: {
                           book: b,
                             id: u,
-                            pay: pa,
                             rent:rent,
                             purch:purch
                         }
-                        //    'user.$.book':b,
-                        //    'user.$.value':u,
-                        //    'user.$.pay':pa,
-                        //    can:true
                     }
                 })
             if(rent=='true')
@@ -99,8 +94,7 @@ Meteor.methods({
         else
         {
             return false;
-        //    Appointments.update({place: placeid._id, date: dat},
-        //        {$set:{can:true,'user.id':u,'user.book':b,'user.pay':pa}})
+
         }
     },
     parseUpload( data ) {

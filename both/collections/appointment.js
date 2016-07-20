@@ -55,9 +55,6 @@ AppointmentSchema = new SimpleSchema({
         type: String
         //label: "اسم الكتب"
     },
-    'user.$.pay': {
-        type: String
-    },
     'user.$.rent':
     {
         type:String

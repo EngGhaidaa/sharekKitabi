@@ -156,9 +156,9 @@ BookSchema = new SimpleSchema({
         type: Object,
         optional: true
     },
-    'renting.$.value': {
-        type: String
-    },
+    //'renting.$.value': {
+    //    type: String
+    //},
     'renting.$.user': {
         type: String
     },
@@ -174,9 +174,9 @@ BookSchema = new SimpleSchema({
         type: Object,
         optional: true
     },
-    'purching.$.value': {
-        type: String
-    },
+    //'purching.$.value': {
+    //    type: String
+    //},
     'purching.$.user': {
         type: String
     },

@@ -28,7 +28,6 @@ var privateRoutes = [
 	"records",
 	"users",
 	"times",
-	"paypal",
 	"appointment"
 ];
 
@@ -196,15 +195,24 @@ Router.map(function () {
 	this.route("user_settings.profile", {path: "/user_settings/profile", controller: "UserSettingsProfileController"});
 	this.route("user_settings.change_pass", {path: "/user_settings/change_pass", controller: "UserSettingsChangePassController"});
 	this.route("logout", {path: "/logout", controller: "LogoutController"});
-	this.route("appointment",{path:"/appointment/:bookid/:payb/:rentvalue/:purchvalue",controller:"AppointmentController"});
-	this.route("paypal",{path:"/paypal/:bookid/:payb/:rentvalue/:purchvalue",controller:"PaypalController"});
+	this.route("appointment",{path:"/appointment/:bookid/:rentvalue/:purchvalue",controller:"AppointmentController"});
+	//this.route("paypal",{path:"/paypal/:bookid/:payb/:rentvalue/:purchvalue",controller:"PaypalController"});
 
 	this.route("home_public", {path: "/", controller: "HomePublicController"});
-	this.route("login", {path: "/login", controller: "LoginController"});
-	this.route("register", {path: "/register", controller: "RegisterController"});
+
 	this.route("categories", {path:"/categories",controller:"CategoriesController"});
 	this.route("books", {path: "/categories/:id",controller:"BooksController"});
 	this.route("book_details", {path: "/book/:id",controller:"BookDetailsController"});
+
+	this.route("news", {path: "/news", controller: "NewsController"});
+
+	this.route("work", {path: "/work", controller: "WorkController"});
+
+	this.route("contact", {path: "/contact", controller: "ContactController"});
+
+	this.route("info", {path: "/info", controller: "InfoController"});
+
+
 
 	this.route("admin_page",{path:"/admin/admin_page",controller:"AdminPageController"});
 	this.route("add_book",{path:"/admin/add_book",controller:"AddBookController"});
